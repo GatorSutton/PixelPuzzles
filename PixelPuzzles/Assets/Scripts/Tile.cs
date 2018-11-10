@@ -5,7 +5,8 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
 
     public float timeBetweenFlicker;
-    public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
+    // public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
+    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE};
     //[System.NonSerialized]
     public States myState = States.NONE;
     public Material[] materials;
@@ -14,6 +15,7 @@ public class Tile : MonoBehaviour {
     public bool playerHere = false;
     bool warning = false;
     bool takingDamage = false;
+    private States flippedState;
 
     public delegate void TileAction();
     public static event TileAction OnHit;
@@ -28,7 +30,8 @@ public class Tile : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         updateMaterial();
-        checkForPlayerOnSwitch();
+        checkForPlayerOnFlip();
+        //checkForPlayerOnSwitch();
 	}
 
     private void OnCollisionStay(Collision collision)
@@ -49,7 +52,7 @@ public class Tile : MonoBehaviour {
 
     }
     
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "fire"  && !takingDamage)
@@ -109,6 +112,8 @@ public class Tile : MonoBehaviour {
         }
     }
 
+    */
+
     private void updateMaterial()
     {
         switch(myState)
@@ -116,6 +121,7 @@ public class Tile : MonoBehaviour {
             case States.NONE:
                 rend.material = materials[0];
                 break;
+                /*
             case States.FIRE:
                 rend.material = materials[1];
                 break;
@@ -140,15 +146,24 @@ public class Tile : MonoBehaviour {
             case States.POTION:
                 rend.material = materials[7];
                 break;
+                */
         }
         
+        /*
         if(playerHere && myState != States.SELECTOR && myState != States.FAKEFIRE)
+        {
+            rend.material = materials[5];
+        }
+        */
+
+        if(playerHere && myState != States.SET)
         {
             rend.material = materials[5];
         }
         
     }
 
+    /*
     public IEnumerator flickerWarn()
     {
         warning = true;
@@ -185,17 +200,27 @@ public class Tile : MonoBehaviour {
         myState = States.NONE;
         takingDamage = false;
     }
+    */
 
     public bool isPlayerHere()
     {
         return playerHere;
     }
-
+    /*
     private void checkForPlayerOnSwitch()
     {
         if(playerHere && myState == States.SWITCH)
         {
             myState = States.NONE;
+        }
+    }
+    */
+
+    private void checkForPlayerOnFlip()
+    {
+        if (playerHere && myState == States.FLIP)
+        {
+            myState = flippedState;
         }
     }
 

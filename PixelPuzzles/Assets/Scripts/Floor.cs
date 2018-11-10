@@ -105,6 +105,7 @@ public class Floor : MonoBehaviour {
         return false;
     }
 
+    /*
     public void setSwitchTiles()
     {
         for (int x = 0; x < sizeX; x++)
@@ -130,7 +131,7 @@ public class Floor : MonoBehaviour {
         }
         return true;
     }
-
+    */
     public void clearAllTiles()
     {
         for (int x = 0; x < sizeX; x++)

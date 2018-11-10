@@ -29,7 +29,6 @@ public class ScanFloorForMatch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //loop through all the squares
-        
         for (int i = 0; i < tileArray.GetLength(0); i++)
         {
             for (int j = 0; j < tileArray.GetLength(1); j++)
@@ -73,7 +72,7 @@ public class ScanFloorForMatch : MonoBehaviour {
                 {
                     if(visited[x,y] == true)
                     {
-                        tileArray[x, y].myState = Tile.States.FAKEFIRE;
+                        tileArray[x, y].myState = Tile.States.SET;
                     }
                 }
             }
@@ -87,6 +86,10 @@ public class ScanFloorForMatch : MonoBehaviour {
 
     private bool CheckShape(int i, int j, TetrisDefinitions.Shapes shape)
     {
+        if(!tileArray[i, j].isPlayerHere())
+        {
+            return false;
+        }
         bool[,] visited = DepthFirstSearch.islandIsTetranimo(tileArray, i, j);
         if(visited != null)
         {

@@ -13,7 +13,7 @@ public class DepthFirstSearch {
         return (row >= 0) && (row < ROW) &&
                (col >= 0) && (col < COL) &&
                (M[row, col].isPlayerHere() &&
-               (M[row, col].myState != Tile.States.FAKEFIRE) &&                                     //check for inbounds and player on tile and tile is not already set
+               (M[row, col].myState != Tile.States.SET) &&                                     //check for inbounds and player on tile and tile is not already set
                !visited[row, col]);
     }
 
