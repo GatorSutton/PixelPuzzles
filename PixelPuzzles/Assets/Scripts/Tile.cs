@@ -6,21 +6,15 @@ public class Tile : MonoBehaviour {
 
     public float timeBetweenFlicker;
     // public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
-    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE};
+    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, SELECTOR};
     //[System.NonSerialized]
     public States myState = States.NONE;
     public Material[] materials;
     public MeshRenderer rend;
 
     public bool playerHere = false;
-    bool warning = false;
-    bool takingDamage = false;
-    private States flippedState;
-
-    public delegate void TileAction();
-    public static event TileAction OnHit;
-
-    int framesHitCount;
+    public States flippedState;
+    bool flipped = false;
 
     // Use this for initialization
     void Start () {
@@ -31,7 +25,6 @@ public class Tile : MonoBehaviour {
 	void Update () {
         updateMaterial();
         checkForPlayerOnFlip();
-        //checkForPlayerOnSwitch();
 	}
 
     private void OnCollisionStay(Collision collision)
@@ -52,35 +45,17 @@ public class Tile : MonoBehaviour {
 
     }
     
-    /*
+ 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "fire"  && !takingDamage)
-        {
-            myState = States.FIRE;
-        }
-
-        if(other.tag == "warn" && !warning && myState != States.POTION)
-        {
-            StartCoroutine(flickerWarn());
-        }
-
-        if(other.tag == "fakefire")
-        {
-            myState = States.FAKEFIRE;
-        }
 
         if(other.tag == "selector")
         {
             myState = States.SELECTOR;
         }
 
-        if(other.tag == "potion")
-        {
-            myState = States.POTION;
-        }
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "fire")
@@ -99,20 +74,6 @@ public class Tile : MonoBehaviour {
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.tag == "fire" && !takingDamage)
-        {
-                myState = States.FIRE;
-        }
-
-        if(other.tag == "warn" && !warning && myState != States.POTION)
-        {
-            StartCoroutine(flickerWarn());
-        }
-    }
-
-    */
 
     private void updateMaterial()
     {
@@ -121,106 +82,56 @@ public class Tile : MonoBehaviour {
             case States.NONE:
                 rend.material = materials[0];
                 break;
-                /*
-            case States.FIRE:
+            case States.SET:
                 rend.material = materials[1];
                 break;
-            case States.WARN:
-                rend.material = materials[2];
-                break;
-            case States.DAMAGE:
-                rend.material = materials[3];
-                break;
-            case States.SWITCH:
-                rend.material = materials[4];
-                break;
-            case States.FLICKEROFF:
-                rend.material = materials[0];
-                break;
-            case States.FAKEFIRE:
-                rend.material = materials[1];
-                break;
-            case States.SELECTOR:
+            case States.FLIP:
                 rend.material = materials[6];
                 break;
-            case States.POTION:
-                rend.material = materials[7];
+            case States.RED:
+                rend.material = materials[1];
                 break;
-                */
+            case States.ORANGE:
+                rend.material = materials[2];
+                break;
+            case States.YELLOW:
+                rend.material = materials[3];
+                break;
+            case States.GREEN:
+                rend.material = materials[4];
+                break;
+            case States.BLUE:
+                rend.material = materials[5];
+                break;
+            case States.PURPLE:
+                rend.material = materials[6];
+                break;
+            case States.SELECTOR:
+                rend.material = materials[4];
+                break;
+                
         }
         
-        /*
-        if(playerHere && myState != States.SELECTOR && myState != States.FAKEFIRE)
+
+        if(playerHere && myState != States.SET && flipped != true)
         {
             rend.material = materials[5];
         }
-        */
-
-        if(playerHere && myState != States.SET)
-        {
-            rend.material = materials[5];
-        }
         
     }
-
-    /*
-    public IEnumerator flickerWarn()
-    {
-        warning = true;
-        WaitForSeconds wait = new WaitForSeconds(timeBetweenFlicker);
-        myState = States.WARN;
-        yield return wait;
-        myState = States.FLICKEROFF;
-        yield return wait;
-        myState = States.WARN;
-        yield return wait;
-        myState = States.FLICKEROFF;
-        yield return wait;
-        myState = States.WARN;
-        yield return wait;
-        myState = States.NONE;
-        yield return wait;
-        warning = false;
-    }
-
-    private IEnumerator flickerDamage()
-    {
-        takingDamage = true;
-        WaitForSeconds wait = new WaitForSeconds(timeBetweenFlicker);
-        myState = States.DAMAGE;
-        yield return wait;
-        myState = States.FLICKEROFF;
-        yield return wait;
-        myState = States.DAMAGE;
-        yield return wait;
-        myState = States.FLICKEROFF;
-        yield return wait;
-        myState = States.DAMAGE;
-        yield return wait;
-        myState = States.NONE;
-        takingDamage = false;
-    }
-    */
 
     public bool isPlayerHere()
     {
         return playerHere;
     }
-    /*
-    private void checkForPlayerOnSwitch()
-    {
-        if(playerHere && myState == States.SWITCH)
-        {
-            myState = States.NONE;
-        }
-    }
-    */
+
 
     private void checkForPlayerOnFlip()
     {
         if (playerHere && myState == States.FLIP)
         {
             myState = flippedState;
+            flipped = true;
         }
     }
 

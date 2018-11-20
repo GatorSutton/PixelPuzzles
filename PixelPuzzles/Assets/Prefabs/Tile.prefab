@@ -130,12 +130,12 @@ MonoBehaviour:
   myState: 0
   materials:
   - {fileID: 2100000, guid: b7d270627ca95d140aac2874bd804cd6, type: 2}
-  - {fileID: 2100000, guid: b079afb73cbd04546a193dac84cd869f, type: 2}
-  - {fileID: 2100000, guid: c30ff87e27669a94096f166734f93587, type: 2}
+  - {fileID: 2100000, guid: 370205ada1af0ca4690ec2da4fc6f861, type: 2}
+  - {fileID: 2100000, guid: 4b234e48b13d6f0499e209b7c0feda62, type: 2}
+  - {fileID: 2100000, guid: c57ca75d5edabee46bd70cd78e238a7d, type: 2}
+  - {fileID: 2100000, guid: ca5d854477fee774c9ada9f207571b88, type: 2}
+  - {fileID: 2100000, guid: 4ada10ba323777740aa4734cd91b06f0, type: 2}
   - {fileID: 2100000, guid: 562c18ff782b8684da36f32bda34c2f1, type: 2}
-  - {fileID: 2100000, guid: 5e3c54bf2c3b7144cb51816aac98b62a, type: 2}
-  - {fileID: 2100000, guid: 1013ebaf8b521e9419e5eab94a94eaea, type: 2}
-  - {fileID: 2100000, guid: f5ab65a38ce12f84097e62fa5f43b2f6, type: 2}
-  - {fileID: 2100000, guid: a49852ef310f5e34990a5fda5de26a4b, type: 2}
   rend: {fileID: 23998497300806786}
   playerHere: 0
+  flippedState: 0
