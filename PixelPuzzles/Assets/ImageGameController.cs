@@ -18,6 +18,7 @@ public class ImageGameController : MonoBehaviour {
     List<Tile> tileList;
     PixelGrid gridOfPixels;
     List<Tile.States> statesMap;
+    [SerializeField]
     ImageDefinitions.Direction correctDirection;
     bool answered = false;
 
@@ -30,7 +31,7 @@ public class ImageGameController : MonoBehaviour {
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         tileList = floor.getAllTiles();
 
-        StartCoroutine(multipleRounds(2));
+        StartCoroutine(multipleRounds(3));
 
 	}
 
@@ -46,7 +47,9 @@ public class ImageGameController : MonoBehaviour {
 
         //select randomly one of the three current sprites
         gridOfPixels = GetComponentsInChildren<PixelGrid>()[Random.Range(0, currentSpriteRenderers.Count)];
+        print(gridOfPixels.GetComponent<SpriteRenderer>().sprite.name);
         correctDirection = gridOfPixels.GetComponentInChildren<Selector>().direction;
+
     }
 
     void setTileList()
@@ -88,13 +91,13 @@ public class ImageGameController : MonoBehaviour {
     {
         setUpCurrentSpriteList();
         setTileList();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
         prepareForAnswer();
         while (answered == false)
         {
             yield return null;
         }
-        answered = true;
+        answered = false;
 
     }
 

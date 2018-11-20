@@ -5,7 +5,8 @@ using UnityEngine;
 public class PixelGrid : MonoBehaviour {
 
     Texture2D pixelMap;
-    List<Tile.States> statesMap = new List<Tile.States>();
+    [SerializeField]
+
     Tile.States convertPixelToState(Color32 pixel)
     {
          var a = (int)pixel.a;
@@ -57,7 +58,7 @@ public class PixelGrid : MonoBehaviour {
 
     public List<Tile.States> createStatesMap()
     {
-      
+        List<Tile.States> statesMap = new List<Tile.States>();
         for (int i = 0; i < pixelMap.height; i++)
         {
             for (int j = 0; j < pixelMap.width; j++)

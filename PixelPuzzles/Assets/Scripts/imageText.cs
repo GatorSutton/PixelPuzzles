@@ -11,6 +11,7 @@ public class imageText : MonoBehaviour
     private Selector selector;
 
     private Text text;
+    private SpriteRenderer SR;
 
 
 
@@ -19,6 +20,7 @@ public class imageText : MonoBehaviour
     {
         selector = transform.parent.parent.GetComponentInChildren<Selector>();
         text = gameObject.GetComponent<Text>();
+        SR = transform.parent.parent.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -26,5 +28,14 @@ public class imageText : MonoBehaviour
     {
         percentComplete = selector.percentage;
         text.text = Mathf.Round((percentComplete * 100)) + "%";
+
+        if (SR.enabled == true)
+        {
+            text.enabled = true;
+        }
+        else
+        {
+            text.enabled = false;
+        }
     }
 }

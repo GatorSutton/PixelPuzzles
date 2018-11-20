@@ -781,11 +781,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteList:
   - {fileID: 21300000, guid: 5dbf2ca769394e340b73568f4e2cabe3, type: 3}
-  - {fileID: 21300000, guid: 1424aae9b54dea445a3092fce970f932, type: 3}
+  - {fileID: 21300000, guid: e87c55b0bae5ed941a2bc4f0070df93d, type: 3}
+  - {fileID: 21300000, guid: 7e936e9d149d0734180f965a5acb9dbb, type: 3}
+  - {fileID: 21300000, guid: a8e7b7f0d87bea2409793a19d94111c0, type: 3}
+  - {fileID: 21300000, guid: b77c48dbae762624c82b7eca6aededa9, type: 3}
   - {fileID: 21300000, guid: 3a5d36eaf1f3c454e988b09488f92bcf, type: 3}
-  - {fileID: 21300000, guid: 3a5d36eaf1f3c454e988b09488f92bcf, type: 3}
-  - {fileID: 21300000, guid: 3a5d36eaf1f3c454e988b09488f92bcf, type: 3}
-  - {fileID: 21300000, guid: 3a5d36eaf1f3c454e988b09488f92bcf, type: 3}
+  - {fileID: 21300000, guid: eae6bfb5873f8344ba7627ea86f610a2, type: 3}
+  - {fileID: 21300000, guid: f75cb184334a9b84b86bb40b9fe94410, type: 3}
+  - {fileID: 21300000, guid: 76af90e5c26586f4e87a82253834443d, type: 3}
+  correctDirection: 0
   currentSpriteRenderers:
   - {fileID: 1478300092}
   - {fileID: 595724711}
@@ -1247,7 +1251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1468397935
 MonoBehaviour:
   m_ObjectHideFlags: 0
