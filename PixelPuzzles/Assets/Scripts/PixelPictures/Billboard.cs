@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour {
 
-    public Camera camera;
+    Camera camera;
+    public string cameraName;
 
 	// Use this for initialization
 	void Start () {
-		
+        camera = GameObject.Find(cameraName).GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - tile
   - selector
+  - affector
   layers:
   - Default
   - TransparentFX

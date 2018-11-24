@@ -24,6 +24,7 @@ public class ImageGameController : MonoBehaviour {
 
     public List<SpriteRenderer> currentSpriteRenderers = new List<SpriteRenderer>();
     public List<Selector> selectors = new List<Selector>();
+    public float timeToFlip;
     
 
     // Use this for initialization
@@ -91,7 +92,7 @@ public class ImageGameController : MonoBehaviour {
     {
         setUpCurrentSpriteList();
         setTileList();
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(timeToFlip);
         prepareForAnswer();
         while (answered == false)
         {

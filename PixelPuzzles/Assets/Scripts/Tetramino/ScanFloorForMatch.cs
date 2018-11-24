@@ -8,14 +8,15 @@ public class ScanFloorForMatch : MonoBehaviour {
     Tile[,] tileArray;
     bool checkingShapeInProgress = false;
 
+    public float timeToMakeShape;
     public List<enumShape> shapeMap;
 
-    [SerializeField]
     public float percentComplete = 0;
 
     private PointList neighborData = new PointList();
 
     public TetrisDefinitions.Shapes shape;
+    private shapeController visualShape;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +24,7 @@ public class ScanFloorForMatch : MonoBehaviour {
         tileArray = floor.getArrayOfTiles();
         neighborData.rotate();
 
-        Instantiate(shapeMap.Find(x => x.shape == shape).shapePrefab, this.transform);
+        visualShape = Instantiate(shapeMap.Find(x => x.shape == shape).shapePrefab, this.transform).GetComponent<shapeController>();
     }
 	
 	// Update is called once per frame
@@ -33,7 +34,7 @@ public class ScanFloorForMatch : MonoBehaviour {
         {
             for (int j = 0; j < tileArray.GetLength(1); j++)
             {
-                if (tileArray[i, j].isPlayerHere())
+                if (tileArray[i, j].isPlayerHere() && tileArray[i,j].myState != Tile.States.SET)
                 {
                     bool[,] visited = DepthFirstSearch.islandIsTetranimo(tileArray, i, j);
                         if(visited != null)
@@ -42,7 +43,7 @@ public class ScanFloorForMatch : MonoBehaviour {
                         if(TetrisDefinitions.CheckForShapeMatch(shape, neighborData) && !checkingShapeInProgress)
                         {
                             checkingShapeInProgress = true;
-                            StartCoroutine(constantCheckShape(5f, i, j, visited));                                                      //check that shape holds for set amount of time
+                            StartCoroutine(constantCheckShape(timeToMakeShape, i, j, visited));                                                      //check that shape holds for set amount of time
                         }
                     }
                 }
@@ -76,6 +77,7 @@ public class ScanFloorForMatch : MonoBehaviour {
                     }
                 }
             }
+            visualShape.selfDestruct();
             Destroy(this.gameObject);
         }
 

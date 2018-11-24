@@ -9,29 +9,35 @@ public class TetrisGameController : MonoBehaviour {
     public float gameTime;
     Floor floor;
     Tile[,] arrayOfTiles;
-
+    GameObject tetromino;
+    bool waitingForSpawn = false;
 
 	// Use this for initialization
 	void Start () {
-        spawnTetranimo();
+        spawnTetronimo();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         arrayOfTiles = floor.getArrayOfTiles();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if(transform.childCount < 1)
+
+        if(tetromino == null && !waitingForSpawn)
         {
-            spawnTetranimo();
+            waitingForSpawn = true;
+            Invoke("spawnTetronimo", 3);
         }
+
         checkForClearedLines();
 
 	}
 
-    void spawnTetranimo()
+    GameObject spawnTetronimo()
     {
-        Instantiate(genericTetranimo, transform);
+        waitingForSpawn = false;
+        tetromino = Instantiate(genericTetranimo, transform).gameObject;
         genericTetranimo.shape = (TetrisDefinitions.Shapes)Random.Range(0, System.Enum.GetValues(typeof(TetrisDefinitions.Shapes)).Length);
+        return tetromino;
     }
 
     void checkForClearedLines()
@@ -49,18 +55,47 @@ public class TetrisGameController : MonoBehaviour {
             }
             if(completeLine)
             {
-                deleteColumn(i);
+                StartCoroutine(deleteColumn(i));
+            }
+
+        }
+
+
+        //Rows
+        for (int i = 0; i < arrayOfTiles.GetLength(1); i++)
+        {
+            bool completeLine = true;
+            for (int j = 0; j < arrayOfTiles.GetLength(0); j++)
+            {
+                if (arrayOfTiles[j, i].myState != Tile.States.SET)
+                {
+                    completeLine = false;
+                }
+            }
+            if (completeLine)
+            {
+                StartCoroutine(deleteRow(i));
             }
 
         }
 
     }
 
-    void deleteColumn(int rowNumber)
+    IEnumerator deleteColumn(int columnNumber)
     {
         for (int i = 0; i < arrayOfTiles.GetLength(1); i++)
         {
-            arrayOfTiles[rowNumber, i].myState = Tile.States.NONE;
+            arrayOfTiles[columnNumber, i].myState = Tile.States.NONE;
+            yield return new WaitForSeconds(.2f);
+        }
+    }
+
+    IEnumerator deleteRow(int rowNumber)
+    {
+        for (int i = 0; i < arrayOfTiles.GetLength(1); i++)
+        {
+            arrayOfTiles[i, rowNumber].myState = Tile.States.NONE;
+            yield return new WaitForSeconds(.2f);
         }
     }
 

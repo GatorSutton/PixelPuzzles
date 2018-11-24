@@ -26,6 +26,7 @@ public class Tile : MonoBehaviour {
         updateMaterial();
         checkForPlayerOnFlip();
 	}
+    
 
     private void OnCollisionStay(Collision collision)
     {
@@ -45,7 +46,9 @@ public class Tile : MonoBehaviour {
 
     }
     
- 
+
+
+
     private void OnTriggerEnter(Collider other)
     {
 
