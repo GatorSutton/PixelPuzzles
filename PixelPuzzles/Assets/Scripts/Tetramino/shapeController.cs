@@ -13,13 +13,13 @@ public class shapeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
     public void selfDestruct()
     {
         transform.parent = null;
         rb.AddRelativeForce(0f, 0f, 100f);
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 10f);
     }
 }

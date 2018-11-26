@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114040012981743538}
   - component: {fileID: 114754725979567952}
   - component: {fileID: 54203841288100226}
+  - component: {fileID: 114126230691231220}
   m_Layer: 0
   m_Name: J
   m_TagString: affector
@@ -441,7 +442,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3524b365746768b40a3f23baf9a4db2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  rotationSpeed: 40
+--- !u!114 &114126230691231220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055818544576400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80221dc264a00bd468bbc125371e8ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114754725979567952
 MonoBehaviour:
   m_ObjectHideFlags: 1

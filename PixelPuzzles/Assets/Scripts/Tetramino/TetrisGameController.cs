@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TetrisGameController : MonoBehaviour {
 
+    public LivingParticleArrayController livingParticles;
     public ScanFloorForMatch genericTetranimo;
     public float gameTime;
     Floor floor;
@@ -12,11 +13,18 @@ public class TetrisGameController : MonoBehaviour {
     GameObject tetromino;
     bool waitingForSpawn = false;
 
+   // public Transform leftSpawn;
+    public Transform frontSpawn;
+   // public Transform rightSpawn;
+
 	// Use this for initialization
 	void Start () {
         spawnTetronimo();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         arrayOfTiles = floor.getArrayOfTiles();
+
+        LivingParticleArrayController lP = Instantiate(livingParticles, frontSpawn);
+        lP.transform.localPosition = new Vector3(0f, 0f, 1f);
     }
 	
 	// Update is called once per frame
@@ -25,9 +33,8 @@ public class TetrisGameController : MonoBehaviour {
         if(tetromino == null && !waitingForSpawn)
         {
             waitingForSpawn = true;
-            Invoke("spawnTetronimo", 3);
+            Invoke("spawnTetronimo", 2);
         }
-
         checkForClearedLines();
 
 	}
@@ -35,7 +42,8 @@ public class TetrisGameController : MonoBehaviour {
     GameObject spawnTetronimo()
     {
         waitingForSpawn = false;
-        tetromino = Instantiate(genericTetranimo, transform).gameObject;
+        tetromino = Instantiate(genericTetranimo, frontSpawn.transform).gameObject;
+        tetromino.transform.localPosition = new Vector3(0f, -3f, 0f);
         genericTetranimo.shape = (TetrisDefinitions.Shapes)Random.Range(0, System.Enum.GetValues(typeof(TetrisDefinitions.Shapes)).Length);
         return tetromino;
     }
@@ -56,6 +64,7 @@ public class TetrisGameController : MonoBehaviour {
             if(completeLine)
             {
                 StartCoroutine(deleteColumn(i));
+              //  StartCoroutine(explosion());
             }
 
         }
@@ -75,6 +84,7 @@ public class TetrisGameController : MonoBehaviour {
             if (completeLine)
             {
                 StartCoroutine(deleteRow(i));
+              //  StartCoroutine(explosion());
             }
 
         }
@@ -99,5 +109,23 @@ public class TetrisGameController : MonoBehaviour {
         }
     }
 
+    /*
+    IEnumerator explosion()
+    {
+        float timer = 0;
+
+        while (timer < 2)
+        {
+            GameObject shape = Instantiate(genericTetranimo, frontSpawn.transform).gameObject;
+            Destroy(shape.GetComponent<moveTetrominoToCenter>());
+            Destroy(shape.GetComponentInChildren<affectorAdder>());
+            shape.AddComponent<deathTimer>();
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return null;
+    }
+    */
 
 }

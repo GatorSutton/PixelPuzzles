@@ -17,9 +17,11 @@ public class ScanFloorForMatch : MonoBehaviour {
 
     public TetrisDefinitions.Shapes shape;
     private shapeController visualShape;
+    private moveTetrominoToCenter mTTC;
 
 	// Use this for initialization
 	void Start () {
+        mTTC = GetComponent<moveTetrominoToCenter>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         tileArray = floor.getArrayOfTiles();
         neighborData.rotate();
@@ -29,21 +31,24 @@ public class ScanFloorForMatch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //loop through all the squares
-        for (int i = 0; i < tileArray.GetLength(0); i++)
+        if (mTTC !=null && mTTC.centered)
         {
-            for (int j = 0; j < tileArray.GetLength(1); j++)
+            //loop through all the squares
+            for (int i = 0; i < tileArray.GetLength(0); i++)
             {
-                if (tileArray[i, j].isPlayerHere() && tileArray[i,j].myState != Tile.States.SET)
+                for (int j = 0; j < tileArray.GetLength(1); j++)
                 {
-                    bool[,] visited = DepthFirstSearch.islandIsTetranimo(tileArray, i, j);
-                        if(visited != null)
+                    if (tileArray[i, j].isPlayerHere() && tileArray[i, j].myState != Tile.States.SET)
                     {
-                        neighborData = DepthFirstSearch.getListOfNeighbors(visited);
-                        if(TetrisDefinitions.CheckForShapeMatch(shape, neighborData) && !checkingShapeInProgress)
+                        bool[,] visited = DepthFirstSearch.islandIsTetranimo(tileArray, i, j);
+                        if (visited != null)
                         {
-                            checkingShapeInProgress = true;
-                            StartCoroutine(constantCheckShape(timeToMakeShape, i, j, visited));                                                      //check that shape holds for set amount of time
+                            neighborData = DepthFirstSearch.getListOfNeighbors(visited);
+                            if (TetrisDefinitions.CheckForShapeMatch(shape, neighborData) && !checkingShapeInProgress)
+                            {
+                                checkingShapeInProgress = true;
+                                StartCoroutine(constantCheckShape(timeToMakeShape, i, j, visited));                                                      //check that shape holds for set amount of time
+                            }
                         }
                     }
                 }
@@ -79,6 +84,7 @@ public class ScanFloorForMatch : MonoBehaviour {
             }
             visualShape.selfDestruct();
             Destroy(this.gameObject);
+            //tetrominoReset();
         }
 
         percentComplete = 0;
@@ -104,6 +110,12 @@ public class ScanFloorForMatch : MonoBehaviour {
 
         return false;
         
+    }
+
+    private void tetrominoReset()
+    {
+        visualShape = Instantiate(shapeMap.Find(x => x.shape == shape).shapePrefab, this.transform).GetComponent<shapeController>();
+        transform.localPosition = new Vector3(0f, -5f, 0f);
     }
 
 }

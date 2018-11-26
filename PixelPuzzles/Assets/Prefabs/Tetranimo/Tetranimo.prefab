@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4622559700985430}
   - component: {fileID: 114467526279799360}
+  - component: {fileID: 114415464381883310}
   m_Layer: 0
   m_Name: Tetranimo
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333201700233988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 224014900565358090}
@@ -192,6 +193,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114415464381883310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333201700233988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb9250a7a9ced94bbefac7d1d92b7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114467526279799360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +239,7 @@ MonoBehaviour:
     shapePrefab: {fileID: 1605251728403216, guid: d27b2c6c020935942a3886909befdee9,
       type: 2}
   percentComplete: 0
-  shape: 6
+  shape: 0
 --- !u!114 &114628280580726824
 MonoBehaviour:
   m_ObjectHideFlags: 1

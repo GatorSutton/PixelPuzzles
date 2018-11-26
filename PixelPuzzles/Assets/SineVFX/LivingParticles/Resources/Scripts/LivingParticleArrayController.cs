@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LivingParticleArrayController : MonoBehaviour {
 
-    public Transform[] affectors;
+    //public Transform[] affectors;
+    public List<Transform> affectors;
 
     private Vector4[] positions;
     private ParticleSystemRenderer psr;
@@ -17,12 +18,21 @@ public class LivingParticleArrayController : MonoBehaviour {
 
     // Sending an array of positions to particle shader
     void Update () {
-        positions = new Vector4[affectors.Length];
+        // positions = new Vector4[affectors.Length];
+        positions = new Vector4[affectors.Count];
         for (int i = 0; i < positions.Length; i++)
         {
             positions[i] = affectors[i].position;
         }
-        psr.material.SetVectorArray("_Affectors", positions);
-        psr.material.SetInt("_AffectorCount", affectors.Length);
+        if (affectors.Count > 0)
+        {
+            psr.material.SetVectorArray("_Affectors", positions);
+            // psr.material.SetInt("_AffectorCount", affectors.Length);
+            psr.material.SetInt("_AffectorCount", affectors.Count);
+        }
+
+
+
     }
+
 }

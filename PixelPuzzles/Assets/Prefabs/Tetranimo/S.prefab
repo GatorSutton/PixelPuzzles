@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114665353441316306}
   - component: {fileID: 114432067060438134}
   - component: {fileID: 54723191724371172}
+  - component: {fileID: 114593003051121182}
   m_Layer: 0
   m_Name: S
   m_TagString: affector
@@ -121,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051893851565240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -0.5, z: 0}
+  m_LocalPosition: {x: -1.1, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4365826898330570}
@@ -151,7 +152,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1242089710035536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: 0}
+  m_LocalPosition: {x: 1.1, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4365826898330570}
@@ -164,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073722893171848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4365826898330570}
@@ -412,6 +413,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9985f8de17ae1c742aeec09073382921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114593003051121182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018830535576130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80221dc264a00bd468bbc125371e8ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114665353441316306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -423,4 +435,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3524b365746768b40a3f23baf9a4db2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: -100
+  rotationSpeed: 40
