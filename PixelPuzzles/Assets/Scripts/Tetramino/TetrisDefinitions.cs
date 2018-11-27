@@ -5,7 +5,7 @@ using System.Linq;
 
 public class TetrisDefinitions {
 
-    public enum Shapes { J, L, S, Square, Straight, T, Z};
+    public enum Shapes {None, J, L, S, Square, Straight, T, Z};
 
     public enum Direction { Up, Down, Right, Left };
 

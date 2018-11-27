@@ -8,7 +8,7 @@ public class affectorAdder : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        lPAC = transform.parent.parent.GetComponentInChildren<LivingParticleArrayController>();
+        lPAC = transform.parent.parent.parent.GetComponentInChildren<LivingParticleArrayController>();
         lPAC.affectors.Add(transform);
 	}
 	
