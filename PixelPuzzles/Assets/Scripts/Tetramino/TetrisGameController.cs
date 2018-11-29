@@ -12,7 +12,6 @@ public class TetrisGameController : MonoBehaviour {
     public float gameTime;
     Floor floor;
     Tile[,] arrayOfTiles;
-    grabBagRandom gBR;
 
     public Transform leftSpawn;
     public Transform frontSpawn;
@@ -23,7 +22,6 @@ public class TetrisGameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gBR = GetComponent<grabBagRandom>();
         //  spawnTetronimo(Direction.Front);
         spawnerFront = Instantiate(tetrisSpawner, frontSpawn);
         spawnerLeft = Instantiate(tetrisSpawner, leftSpawn);
@@ -102,13 +100,13 @@ public class TetrisGameController : MonoBehaviour {
     private void setUpParticleFields()
     {
         LivingParticleArrayController lP = Instantiate(livingParticles, frontSpawn);
-        lP.transform.localPosition = new Vector3(0f, 0f, 1f);
+       // lP.transform.localPosition = new Vector3(0f, 0f, 1f);
         lP = Instantiate(livingParticles, leftSpawn);
-        lP.transform.localPosition = new Vector3(0f, 0f, 1f);
-        lP.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+       // lP.transform.localPosition = new Vector3(0f, 0f, 1f);
+        //lP.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
         lP = Instantiate(livingParticles, rightSpawn);
-        lP.transform.localPosition = new Vector3(0f, 0f, 1f);
-        lP.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+       // lP.transform.localPosition = new Vector3(0f, 0f, 1f);
+        //lP.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
     }
 
     

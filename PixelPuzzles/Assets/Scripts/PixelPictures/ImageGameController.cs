@@ -25,6 +25,8 @@ public class ImageGameController : MonoBehaviour {
     public List<SpriteRenderer> currentSpriteRenderers = new List<SpriteRenderer>();
     public List<Selector> selectors = new List<Selector>();
     public float timeToFlip;
+    public progressBar pB;
+    public progressBarText pBT;
     
 
     // Use this for initialization
@@ -47,9 +49,10 @@ public class ImageGameController : MonoBehaviour {
         }
 
         //select randomly one of the three current sprites
+
         gridOfPixels = GetComponentsInChildren<PixelGrid>()[Random.Range(0, currentSpriteRenderers.Count)];
         print(gridOfPixels.GetComponent<SpriteRenderer>().sprite.name);
-        correctDirection = gridOfPixels.GetComponentInChildren<Selector>().direction;
+        correctDirection = gridOfPixels.transform.parent.GetComponentInChildren<Selector>().direction;
 
     }
 
@@ -63,22 +66,37 @@ public class ImageGameController : MonoBehaviour {
         }
     }
 
-    //clear the tiles
-    //display sprites
-    //spawn answer boxes
-    void prepareForAnswer()
+    void setTilesRevealed()
+    {
+        for (int i = 0; i < tileList.Count; i++)
+        {
+            tileList[i].myState = statesMap[i];
+        }
+    }
+
+    IEnumerator prepareForAnswer()
     {
         foreach(SpriteRenderer SR in currentSpriteRenderers)
         {
             SR.enabled = true;
-            var selector = SR.GetComponentInChildren<Selector>();
+            while (Vector3.Distance(SR.transform.localPosition, new Vector3(0f, 0f, 0f)) > .1f)
+            {
+                SR.transform.localPosition = Vector3.MoveTowards(SR.transform.localPosition, new Vector3(0f, 0f, 0f), Time.deltaTime);
+                yield return null;
+            }
+        }
+
+        foreach (SpriteRenderer SR in currentSpriteRenderers)
+        {
+            var selector = SR.transform.parent.GetComponentInChildren<Selector>();
             selector.startInitializeSelector();
             selector.toggleBoxCollider();
         }
-        
+
         foreach (Tile tile in tileList)
         {
             tile.myState = Tile.States.NONE;
+            tile.flipped = false;
         }
         foreach(Selector selector in selectors)
         {
@@ -90,14 +108,21 @@ public class ImageGameController : MonoBehaviour {
 
     IEnumerator playRound()
     {
+        yield return StartCoroutine(getReady());
         setUpCurrentSpriteList();
         setTileList();
-        yield return new WaitForSeconds(timeToFlip);
-        prepareForAnswer();
+        print("Reveal the Image!");
+        yield return StartCoroutine(countDownTimer(timeToFlip));
+        //yield return new WaitForSeconds(timeToFlip);
+        yield return StartCoroutine(prepareForAnswer());
+        print("Unanimous Decision");
         while (answered == false)
         {
             yield return null;
         }
+        setTilesRevealed();
+        yield return new WaitForSeconds(5f);
+        resetImages();
         answered = false;
 
     }
@@ -121,6 +146,16 @@ public class ImageGameController : MonoBehaviour {
             print("WRONG");
         }
 
+        foreach(SpriteRenderer SR in currentSpriteRenderers)
+        {
+            var selector = SR.transform.parent.GetComponentInChildren<Selector>();
+            if(selector.direction != direction)
+            {
+                SR.enabled = false;
+                SR.transform.localPosition = new Vector3(0f, 0f, -3f);
+            }
+        }
+
 
         foreach (Tile tile in tileList)
         {
@@ -131,13 +166,51 @@ public class ImageGameController : MonoBehaviour {
             selector.on = false;
             selector.percentage = 0;
         }
-        foreach (SpriteRenderer spriteRenderer in currentSpriteRenderers)
-        {
-            spriteRenderer.enabled = false;
-        }
+
         answered = true;
 
     }
+
+    void OnDestroy()
+    {
+        //cleanup minigame
+        floor.clearAllTiles();
+    }
+
+    IEnumerator countDownTimer(float timeToFlip)
+    {
+        float timer = timeToFlip;
+
+        while (timer >= 0)
+        {
+            pBT.setString(Mathf.Ceil(timer).ToString());
+            pB.setPercent(timer/timeToFlip);
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        pB.setPercent(0f);
+    }
+
+    void resetImages()
+    {
+        foreach (SpriteRenderer SR in currentSpriteRenderers)
+        {
+            SR.transform.localPosition = new Vector3(0f, 0f, -3f);
+            SR.enabled = false;
+        }
+    }
+
+    IEnumerator getReady()
+    {
+        print("READY");
+        yield return new WaitForSeconds(1f);
+        print("SET");
+        yield return new WaitForSeconds(1f);
+        print("REVEAL");
+        yield return new WaitForSeconds(1f);
+
+    }
+
 	
 
 }

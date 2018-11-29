@@ -7,7 +7,7 @@ public class progressBar : MonoBehaviour {
 
     [SerializeField]
     private float percentComplete;
-    private ScanFloorForMatch sFFM;
+    public Text text;
 
     public Color startColor;
     public Color endColor;
@@ -19,16 +19,32 @@ public class progressBar : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        sFFM = gameObject.GetComponentInParent<ScanFloorForMatch>();
         image = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        percentComplete = sFFM.percentComplete;
-        image.fillAmount = sFFM.percentComplete;
+        image.fillAmount = percentComplete;
         image.color = Color.Lerp(startColor, endColor, percentComplete);
+
+        if (text != null)
+        {
+            if(percentComplete <= 0)
+            {
+                text.enabled = false;
+            }
+            else
+            {
+                text.enabled = true;
+            }
+        }
         
     }
+
+    public void setPercent(float percentage)
+    {
+        percentComplete = percentage;
+    }
+
 }

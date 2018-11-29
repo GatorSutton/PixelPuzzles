@@ -20,7 +20,9 @@ public class imageText : MonoBehaviour
     {
         selector = transform.parent.parent.GetComponentInChildren<Selector>();
         text = gameObject.GetComponent<Text>();
-        SR = transform.parent.parent.GetComponent<SpriteRenderer>();
+        //SR = transform.parent.parent.GetComponent<SpriteRenderer>();
+        SR = transform.parent.parent.GetComponentInChildren<SpriteRenderer>();
+    
     }
 
     // Update is called once per frame

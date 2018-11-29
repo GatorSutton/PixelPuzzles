@@ -14,7 +14,7 @@ public class Tile : MonoBehaviour {
 
     public bool playerHere = false;
     public States flippedState;
-    bool flipped = false;
+    public bool flipped = false;
 
     // Use this for initialization
     void Start () {
@@ -116,7 +116,7 @@ public class Tile : MonoBehaviour {
         }
         
 
-        if(playerHere && myState != States.SET && flipped != true)
+        if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR)
         {
             rend.material = materials[5];
         }

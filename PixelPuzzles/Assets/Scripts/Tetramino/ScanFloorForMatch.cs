@@ -7,6 +7,7 @@ public class ScanFloorForMatch : MonoBehaviour {
     Floor floor;
     Tile[,] tileArray;
     bool checkingShapeInProgress = false;
+    public progressBar pB;
 
     public float timeToMakeShape;
     public List<enumShape> shapeMap;
@@ -54,8 +55,9 @@ public class ScanFloorForMatch : MonoBehaviour {
                 }
             }
         }
+        pB.setPercent(percentComplete);
 
-	}
+    }
 
     IEnumerator constantCheckShape(float time, int i, int j, bool[,] visited)
     {

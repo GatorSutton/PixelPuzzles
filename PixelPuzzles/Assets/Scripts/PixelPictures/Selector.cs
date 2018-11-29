@@ -12,6 +12,7 @@ public class Selector : MonoBehaviour {
     List<Tile> notSelectorTiles = new List<Tile>();
     Floor floor;
     public bool on = true;
+    public progressBar pB;
     
     public ImageDefinitions.Direction direction;
     public float percentage;
@@ -31,6 +32,7 @@ public class Selector : MonoBehaviour {
             checkForOnSelector();
             checkForSelected();
         }
+        pB.setPercent(percentage);
 	}
 
     public void toggleBoxCollider()

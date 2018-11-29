@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb9250a7a9ced94bbefac7d1d92b7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  centered: 0
 --- !u!114 &114467526279799360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,31 +216,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa73c3ab763616643b5cfc2b7a214253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pB: {fileID: 114179708781291426}
   timeToMakeShape: 3
   shapeMap:
-  - shape: 0
+  - shape: 1
     shapePrefab: {fileID: 1055818544576400, guid: 85573501c414d7d48bcd8e158eb706e7,
       type: 2}
-  - shape: 1
+  - shape: 2
     shapePrefab: {fileID: 1088132332918932, guid: f49d410f0de22f148aa22eb2e741609e,
       type: 2}
-  - shape: 2
+  - shape: 3
     shapePrefab: {fileID: 1018830535576130, guid: 17f86432d714d994cba79ff62b99ef13,
       type: 2}
-  - shape: 3
+  - shape: 4
     shapePrefab: {fileID: 1094002546302858, guid: 62a6f819ebfc65241bd055399ef531a2,
       type: 2}
-  - shape: 4
+  - shape: 5
     shapePrefab: {fileID: 1657308506222834, guid: 23ea3b6e0ffe7b24fbf0acbdafe982a8,
       type: 2}
-  - shape: 5
+  - shape: 6
     shapePrefab: {fileID: 1694002488748818, guid: 0bcead4a764d34846bdb7bd0b123c1d7,
       type: 2}
-  - shape: 6
+  - shape: 7
     shapePrefab: {fileID: 1605251728403216, guid: d27b2c6c020935942a3886909befdee9,
       type: 2}
   percentComplete: 0
-  shape: 0
+  shape: 1
 --- !u!114 &114628280580726824
 MonoBehaviour:
   m_ObjectHideFlags: 1

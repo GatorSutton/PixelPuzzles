@@ -53,3 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   genericTetromino: {fileID: 114467526279799360, guid: ffc712fa2be290e4a8f282935b09acab,
     type: 2}
+  currentShape: 0
