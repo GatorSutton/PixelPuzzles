@@ -9,6 +9,8 @@ public class DDRController : MonoBehaviour
     public RhythmEventProvider eventProvider;
     public GameObject linePrefab;
     public List<AudioClip> audioClips;
+    public float zOffset;
+    public int frameOffset;
 
     private List<Line> lines;
     private int currentSong;
@@ -78,7 +80,7 @@ public class DDRController : MonoBehaviour
         List<Line> toRemove = new List<Line>();
         foreach (Line line in lines)
         {
-            if (line.index < rhythmTool.currentFrame || line.index > rhythmTool.currentFrame + eventProvider.offset)
+            if (line.index < rhythmTool.currentFrame + frameOffset || line.index > rhythmTool.currentFrame + eventProvider.offset)
             {
                 Destroy(line.gameObject);
                 toRemove.Add(line);
@@ -101,8 +103,10 @@ public class DDRController : MonoBehaviour
         foreach (Line line in lines)
         {
             Vector3 pos = line.transform.position;
-            pos.z = cumulativeMagnitudeSmooth[line.index - rhythmTool.currentFrame] * .01f;
-            pos.z -= magnitudeSmooth[rhythmTool.currentFrame] * .01f * rhythmTool.interpolation;
+            // pos.z = cumulativeMagnitudeSmooth[line.index - rhythmTool.currentFrame] * .01f;
+            // pos.z -= magnitudeSmooth[rhythmTool.currentFrame] * .01f * rhythmTool.interpolation;
+            pos.z = (line.index - rhythmTool.currentFrame) * .1f;
+            pos.z -= zOffset;
             line.transform.position = pos;
         }
     }
@@ -120,20 +124,26 @@ public class DDRController : MonoBehaviour
 
     private void OnOnset(OnsetType type, Onset onset)
     {
-        if (onset.rank < 3 && onset.strength < 5)
+        if (onset.rank < 4 && onset.strength < 5)
             return;
 
+        if(onset.rank < 5)
+        {
+            return;
+        }
+        
         switch (type)
         {
             case OnsetType.Low:
                 //  lines.Add(CreateLine(onset.index, Color.blue, onset.strength, -20));
-                lines.Add(CreateLine(onset.index, Color.blue, onset.strength, 0));
+                lines.Add(CreateLine(onset.index, Color.blue, onset.strength, -1.5f + (1 * Random.Range(0, 4))));
                 break;
             case OnsetType.Mid:
               //  lines.Add(CreateLine(onset.index, Color.green, onset.strength, 0));
                 break;
             case OnsetType.High:
-             //   lines.Add(CreateLine(onset.index, Color.yellow, onset.strength, 20));
+                //   lines.Add(CreateLine(onset.index, Color.yellow, onset.strength, 20));
+                //lines.Add(CreateLine(onset.index, Color.blue, onset.strength, 0));
                 break;
             case OnsetType.All:
               //  lines.Add(CreateLine(onset.index, Color.magenta, onset.strength, 40));
@@ -143,20 +153,13 @@ public class DDRController : MonoBehaviour
 
     private Line CreateLine(int index, Color color, float opacity, float xPosition)
     {
-        print(opacity);
         GameObject lineObject = Instantiate(linePrefab) as GameObject;
-        lineObject.transform.position = new Vector3(xPosition, 0, 0);
+        lineObject.transform.position = new Vector3(xPosition, 0, 0f);
 
         Line line = lineObject.GetComponent<Line>();
-        if (opacity > 15)
-        {
-            line.Init(color, 255, index);
-        }
-        else
-        {
-            line.Init(color, 0, index);
-        }
+        line.Init(color, 255, index);
 
+        line.transform.parent = this.transform;
         return line;
     }
 

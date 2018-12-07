@@ -7,6 +7,9 @@ TagManager:
   - tile
   - selector
   - affector
+  - note
+  - notebar
+  - hittablenote
   layers:
   - Default
   - TransparentFX

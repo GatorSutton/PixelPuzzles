@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour {
 
     public float timeBetweenFlicker;
     // public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
-    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, SELECTOR};
+    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON};
     //[System.NonSerialized]
     public States myState = States.NONE;
     public Material[] materials;
@@ -15,6 +15,9 @@ public class Tile : MonoBehaviour {
     public bool playerHere = false;
     public States flippedState;
     public bool flipped = false;
+    public bool hitFrame = false;
+
+    GameObject note;
 
     // Use this for initialization
     void Start () {
@@ -26,12 +29,20 @@ public class Tile : MonoBehaviour {
         updateMaterial();
         checkForPlayerOnFlip();
 	}
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            playerHit();
+        }
+    }
+
 
     private void OnCollisionStay(Collision collision)
     {
         if(collision.transform.tag == "Player")
-        {
+        { 
             playerHere = true;
         }
     }
@@ -57,6 +68,25 @@ public class Tile : MonoBehaviour {
             myState = States.SELECTOR;
         }
 
+        if(other.tag == "note")
+        {
+            if (myState != States.NOTEBAROFF)
+            {
+                myState = States.NOTE;
+            }
+            else
+            {
+                myState = States.NOTEBARON;
+
+            }
+        }
+        if (other.tag == "notebar")
+        {
+            myState = States.NOTEBAROFF;
+            note = other.gameObject;
+        }
+
+
     }
     
     private void OnTriggerExit(Collider other)
@@ -74,6 +104,18 @@ public class Tile : MonoBehaviour {
         if (other.tag == "selector")
         {
             myState = States.NONE;
+        }
+        if (other.tag == "note")
+        {
+            if (myState != States.NOTEBARON)
+            {
+                myState = States.NONE;
+            }
+            else
+            {
+                myState = States.NOTEBAROFF;
+                note = null;
+            }
         }
     }
 
@@ -112,6 +154,16 @@ public class Tile : MonoBehaviour {
             case States.SELECTOR:
                 rend.material = materials[4];
                 break;
+            case States.NOTE:
+                rend.material = materials[5];
+                break;
+            case States.NOTEBAROFF:
+                rend.material = materials[1];
+                break;
+            case States.NOTEBARON:
+                rend.material = materials[6];
+                break;
+                
                 
         }
         
@@ -120,6 +172,8 @@ public class Tile : MonoBehaviour {
         {
             rend.material = materials[5];
         }
+
+
         
     }
 
@@ -135,6 +189,15 @@ public class Tile : MonoBehaviour {
         {
             myState = flippedState;
             flipped = true;
+        }
+    }
+
+    private void playerHit()
+    {
+        
+        if(note != null)
+        {
+            print("notehit");
         }
     }
 
