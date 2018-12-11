@@ -105,7 +105,7 @@ public class DDRController : MonoBehaviour
             Vector3 pos = line.transform.position;
             // pos.z = cumulativeMagnitudeSmooth[line.index - rhythmTool.currentFrame] * .01f;
             // pos.z -= magnitudeSmooth[rhythmTool.currentFrame] * .01f * rhythmTool.interpolation;
-            pos.z = (line.index - rhythmTool.currentFrame) * .1f;
+            pos.z = (line.index - rhythmTool.currentFrame) * .075f;
             pos.z -= zOffset;
             line.transform.position = pos;
         }
@@ -136,7 +136,10 @@ public class DDRController : MonoBehaviour
         {
             case OnsetType.Low:
                 //  lines.Add(CreateLine(onset.index, Color.blue, onset.strength, -20));
-                lines.Add(CreateLine(onset.index, Color.blue, onset.strength, -1.5f + (1 * Random.Range(0, 4))));
+                var random = Random.Range(0, 4);
+                lines.Add(CreateLine(onset.index, Color.blue, onset.strength, -1.5f + (1 * random)));
+               // lines.Add(CreateLine(onset.index, Color.blue, onset.strength, -5.5f + (1 * random)));
+               // lines.Add(CreateLine(onset.index, Color.blue, onset.strength, 2.5f + (1 * random)));
                 break;
             case OnsetType.Mid:
               //  lines.Add(CreateLine(onset.index, Color.green, onset.strength, 0));

@@ -17,7 +17,8 @@ public class Tile : MonoBehaviour {
     public bool flipped = false;
     public bool hitFrame = false;
 
-    GameObject note;
+    [SerializeField]
+    noteController note;
 
     // Use this for initialization
     void Start () {
@@ -77,13 +78,13 @@ public class Tile : MonoBehaviour {
             else
             {
                 myState = States.NOTEBARON;
+                note = other.GetComponent<noteController>();
 
             }
         }
         if (other.tag == "notebar")
         {
             myState = States.NOTEBAROFF;
-            note = other.gameObject;
         }
 
 
@@ -107,15 +108,15 @@ public class Tile : MonoBehaviour {
         }
         if (other.tag == "note")
         {
-            if (myState != States.NOTEBARON)
-            {
-                myState = States.NONE;
-            }
-            else
-            {
-                myState = States.NOTEBAROFF;
-                note = null;
-            }
+                if (myState != States.NOTEBARON)
+                {
+                    myState = States.NONE;
+                }
+                else
+                {
+                    myState = States.NOTEBAROFF;
+                    note = null;
+                }
         }
     }
 
@@ -198,6 +199,7 @@ public class Tile : MonoBehaviour {
         if(note != null)
         {
             print("notehit");
+            note.strikeNote();
         }
     }
 
