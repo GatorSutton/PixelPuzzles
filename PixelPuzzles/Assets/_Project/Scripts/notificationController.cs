@@ -18,7 +18,7 @@ public class notificationController : MonoBehaviour {
 		
 	}
 
-    void addOneToScore()
+    void addToHitsCount()
     {
         hits++;
         text.text = "Hits: " + hits.ToString();
@@ -26,12 +26,12 @@ public class notificationController : MonoBehaviour {
 
     void OnEnable()
     {
-        noteController.OnNoteStrike += addOneToScore;
+        noteController.OnNoteStrike += addToHitsCount;
     }
 
 
     void OnDisable()
     {
-        noteController.OnNoteStrike -= addOneToScore;
+        noteController.OnNoteStrike -= addToHitsCount;
     }
 }

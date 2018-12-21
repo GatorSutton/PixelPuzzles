@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TetrisGameController : MonoBehaviour {
 
+
     
     public LivingParticleArrayController livingParticles;
     public ScanFloorForMatch genericTetranimo;
@@ -20,9 +21,12 @@ public class TetrisGameController : MonoBehaviour {
     enum Direction { Left, Front, Right};
     public TetrisSpawner spawnerLeft, spawnerFront, spawnerRight;
 
+    float roundTimer;
+
+
 	// Use this for initialization
 	void Start () {
-        //  spawnTetronimo(Direction.Front);
+       
         spawnerFront = Instantiate(tetrisSpawner, frontSpawn);
         spawnerLeft = Instantiate(tetrisSpawner, leftSpawn);
         spawnerRight = Instantiate(tetrisSpawner, rightSpawn);
@@ -34,7 +38,6 @@ public class TetrisGameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         checkForClearedLines();
 	}
 
@@ -109,6 +112,13 @@ public class TetrisGameController : MonoBehaviour {
         //lP.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
     }
 
-    
+    private void OnDestroy()
+    {
+        floor.clearAllTiles();
+    }
+
+
+
+
 
 }

@@ -12,12 +12,14 @@ public class DDRController : MonoBehaviour
     public float zOffset;
     public int frameOffset;
 
+    private Floor floor;
     private List<Line> lines;
     private int currentSong;
     private ReadOnlyCollection<float> magnitudeSmooth;
 
     void Start()
     {
+        floor = GameObject.Find("Floor").GetComponent<Floor>();
         currentSong = -1;
         Application.runInBackground = true;
 
@@ -45,6 +47,7 @@ public class DDRController : MonoBehaviour
     private void OnSongEnded()
     {
         NextSong();
+        Destroy(this.gameObject);
     }
 
     private void NextSong()
@@ -172,5 +175,10 @@ public class DDRController : MonoBehaviour
             Destroy(line.gameObject);
 
         lines.Clear();
+    }
+
+    private void OnDestroy()
+    {
+        floor.clearAllTiles();
     }
 }

@@ -13,7 +13,8 @@ public class TetrisSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gBR = GameObject.Find("TetrisGameController").GetComponent<grabBagRandom>();
+     //   gBR = GameObject.Find("TetrisGameController").GetComponent<grabBagRandom>();
+        gBR = transform.parent.parent.parent.GetComponent<grabBagRandom>();
         spawnTetronimo();
 	}
 	

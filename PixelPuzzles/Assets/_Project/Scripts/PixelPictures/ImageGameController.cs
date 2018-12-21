@@ -13,6 +13,7 @@ public class ImageGameController : MonoBehaviour {
     */
 
     public List<Sprite> spriteList;
+    public textController tC;
 
     Floor floor;
     List<Tile> tileList;
@@ -133,6 +134,7 @@ public class ImageGameController : MonoBehaviour {
         {
             yield return StartCoroutine(playRound());
         }
+        Destroy(this.gameObject);
     }
 
     public void AnswerSelected(ImageDefinitions.Direction direction)
@@ -203,14 +205,17 @@ public class ImageGameController : MonoBehaviour {
     IEnumerator getReady()
     {
         print("READY");
-        yield return new WaitForSeconds(1f);
+        tC.setText("READY");
+        yield return new WaitForSeconds(2f);
         print("SET");
-        yield return new WaitForSeconds(1f);
+        tC.setText("SET");
+        yield return new WaitForSeconds(2f);
         print("REVEAL");
-        yield return new WaitForSeconds(1f);
+        tC.setText("REVEAL");
+        tC.startFadeOffScreen();
+        yield return new WaitForSeconds(3f);
 
     }
 
-	
 
 }

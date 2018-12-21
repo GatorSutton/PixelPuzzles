@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 114938670413933736}
   - component: {fileID: 114184414244264390}
   - component: {fileID: 114036263420711888}
+  - component: {fileID: 114542735644539548}
   m_Layer: 0
   m_Name: DDRController
   m_TagString: Untagged
@@ -278,8 +279,6 @@ MonoBehaviour:
   linePrefab: {fileID: 100000, guid: fbdd49a5790e73e4481c6454fcef2e63, type: 2}
   audioClips:
   - {fileID: 8300000, guid: e801d6c972ed3a14a9553e141a2bd5fd, type: 3}
-  - {fileID: 8300000, guid: d9a6661f42f99ba4bade9ac9d5ff931b, type: 3}
-  - {fileID: 8300000, guid: 80aa9c377eec04a4f9ea809fb68beb70, type: 3}
   zOffset: 4
   frameOffset: -100
 --- !u!114 &114184414244264390
@@ -306,16 +305,28 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114542735644539548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825289263875906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251b526ac355a324d84d84d538c40a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Dancing Disco
 --- !u!114 &114557104487678810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,7 +348,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 300
+    m_FontSize: 150
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -458,7 +469,7 @@ RectTransform:
   m_GameObject: {fileID: 1082293525081458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224227153696536222}
   m_RootOrder: 0

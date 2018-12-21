@@ -32,6 +32,7 @@ public class Selector : MonoBehaviour {
             checkForOnSelector();
             checkForSelected();
         }
+        if(pB!=null)
         pB.setPercent(percentage);
 	}
 
