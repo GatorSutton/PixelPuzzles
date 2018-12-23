@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 195098672}
   - component: {fileID: 195098671}
   m_Layer: 0
-  m_Name: MenuController
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,8 +436,8 @@ Camera:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -503,6 +503,8 @@ GameObject:
   - component: {fileID: 628386333}
   - component: {fileID: 628386335}
   - component: {fileID: 628386334}
+  - component: {fileID: 628386336}
+  - component: {fileID: 628386337}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -568,6 +570,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 628386332}
   m_CullTransparentMesh: 0
+--- !u!114 &628386336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628386332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c22f56dc799b394da7fd127903d6402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &628386337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628386332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa82ad393ddc8e4b9c039fd1920c283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &656066047
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,8 +867,8 @@ Camera:
   m_GameObject: {fileID: 1428152736}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1136,8 +1160,8 @@ Camera:
   m_GameObject: {fileID: 1832593983}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}

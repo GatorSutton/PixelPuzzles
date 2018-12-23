@@ -66,7 +66,7 @@ public class ScanFloorForMatch : MonoBehaviour {
 
         while(timer < time && shapeHolding)
         {
-            Debug.Log("checking" + timer);
+            //Debug.Log("checking" + timer);
             timer += Time.deltaTime;
             percentComplete = timer / time;
             shapeHolding = CheckShape(i, j, shape);
@@ -85,6 +85,7 @@ public class ScanFloorForMatch : MonoBehaviour {
                 }
             }
             visualShape.selfDestruct();
+            ScoreController.AddScore(100);
             Destroy(this.gameObject);
             //tetrominoReset();
         }

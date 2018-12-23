@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuController : MonoBehaviour {
+public class GameController : MonoBehaviour {
 
 
     public textController tC;
@@ -25,9 +25,9 @@ public class MenuController : MonoBehaviour {
         {
             //print the game and wait for rea
             tC.setText(game.GetComponent<nameToBeDisplayed>().name);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1f);
             tC.startFadeOffScreen();
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             var currentGame = Instantiate(game);
             yield return new WaitUntil(() => currentGame == null);
         }

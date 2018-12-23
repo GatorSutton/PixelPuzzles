@@ -100,16 +100,11 @@ public class TetrisGameController : MonoBehaviour {
         }
     }
 
-    private void setUpParticleFields()
+    private void setUpParticleFields() 
     {
         LivingParticleArrayController lP = Instantiate(livingParticles, frontSpawn);
-       // lP.transform.localPosition = new Vector3(0f, 0f, 1f);
         lP = Instantiate(livingParticles, leftSpawn);
-       // lP.transform.localPosition = new Vector3(0f, 0f, 1f);
-        //lP.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
-        lP = Instantiate(livingParticles, rightSpawn);
-       // lP.transform.localPosition = new Vector3(0f, 0f, 1f);
-        //lP.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+        lP = Instantiate(livingParticles, rightSpawn); 
     }
 
     private void OnDestroy()

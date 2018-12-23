@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c23607ba0c0a4696b4e7d82030f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 3
+  roundTime: 1800
 --- !u!114 &114332625186973064
 MonoBehaviour:
   m_ObjectHideFlags: 1
