@@ -7,6 +7,7 @@ public class notificationController : MonoBehaviour {
 
     int hits = 0;
     Text text;
+    int notesInARow = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -22,16 +23,19 @@ public class notificationController : MonoBehaviour {
     {
         hits++;
         text.text = "Hits: " + hits.ToString();
+        ScoreController.AddScore(100);
     }
 
     void OnEnable()
     {
         noteController.OnNoteStrike += addToHitsCount;
+        //noteController.OnNoteMiss += noteMissed;
     }
 
 
     void OnDisable()
     {
         noteController.OnNoteStrike -= addToHitsCount;
+        //noteController.OnNoteMiss -= noteMissed;
     }
 }

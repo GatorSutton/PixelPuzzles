@@ -278,6 +278,7 @@ MonoBehaviour:
   eventProvider: {fileID: 114184414244264390}
   linePrefab: {fileID: 100000, guid: fbdd49a5790e73e4481c6454fcef2e63, type: 2}
   audioClips:
+  - {fileID: 8300000, guid: 5f80cdb0c60eeb9408201823d72cf0fe, type: 3}
   - {fileID: 8300000, guid: e801d6c972ed3a14a9553e141a2bd5fd, type: 3}
   zOffset: 4
   frameOffset: -100

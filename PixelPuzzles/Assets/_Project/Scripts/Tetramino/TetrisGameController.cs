@@ -43,6 +43,7 @@ public class TetrisGameController : MonoBehaviour {
 
     void checkForClearedLines()
     {
+        int numOfCompleteLines = 0;
         //Columns
         for (int i = 0; i < arrayOfTiles.GetLength(0); i++)
         {
@@ -57,6 +58,7 @@ public class TetrisGameController : MonoBehaviour {
             if(completeLine)
             {
                 StartCoroutine(deleteColumn(i));
+                numOfCompleteLines++;
             }
 
         }
@@ -76,8 +78,14 @@ public class TetrisGameController : MonoBehaviour {
             if (completeLine)
             {
                 StartCoroutine(deleteRow(i));
+                numOfCompleteLines++;
             }
 
+        }
+        if(numOfCompleteLines > 0)
+        {
+            StartCoroutine(SpawnFrenzy());
+            ScoreController.AddScore(5000 * (numOfCompleteLines * numOfCompleteLines));
         }
 
     }
@@ -98,6 +106,12 @@ public class TetrisGameController : MonoBehaviour {
             arrayOfTiles[i, rowNumber].myState = Tile.States.NONE;
             yield return new WaitForSeconds(.2f);
         }
+    }
+
+    IEnumerator SpawnFrenzy()
+    {
+        Instantiate(genericTetranimo, this.transform);
+        yield return null;
     }
 
     private void setUpParticleFields() 

@@ -114,7 +114,6 @@ public class ImageGameController : MonoBehaviour {
         setTileList();
         print("Reveal the Image!");
         yield return StartCoroutine(countDownTimer(timeToFlip));
-        //yield return new WaitForSeconds(timeToFlip);
         yield return StartCoroutine(prepareForAnswer());
         print("Unanimous Decision");
         while (answered == false)
@@ -141,10 +140,12 @@ public class ImageGameController : MonoBehaviour {
     {
         if(direction == correctDirection)
         {
+            ScoreController.AddScore(5000);
             print("NOICE");
         }
         else
         {
+            ScoreController.AddScore(-5000);
             print("WRONG");
         }
 

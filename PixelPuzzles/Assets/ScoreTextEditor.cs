@@ -6,25 +6,52 @@ using UnityEngine.UI;
 public class ScoreTextEditor : MonoBehaviour {
 
     Text text;
+    int Score;
+    int displayScore;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         text = GetComponent<Text>();
-	}
-	
+    }
 
-    void UpdateText(int number)
+
+    void UpdateScore(int number)
     {
-        text.text = number.ToString();
+        Score = number;
+        StartCoroutine(UpdateText());
     }
 
     private void OnEnable()
     {
-        ScoreController.OnScoreChanged += UpdateText;
+        ScoreController.OnScoreChanged += UpdateScore;
     }
 
     private void OnDisable()
     {
-        ScoreController.OnScoreChanged -= UpdateText;
+        ScoreController.OnScoreChanged -= UpdateScore;
     }
+
+    IEnumerator UpdateText()
+    {
+        while(displayScore < Score)
+        {
+            if(displayScore + 100 < Score)
+            {
+                displayScore += 100;
+            }
+            else if(displayScore + 10 < Score)
+            {
+                displayScore += 10;
+            }
+            else
+            {
+                displayScore++;
+            }
+           
+            text.text = displayScore.ToString();
+            yield return new WaitForEndOfFrame();
+        }
+        
+    }
+    
 }
