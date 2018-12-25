@@ -6,7 +6,7 @@ using UnityEngine;
 public class TetrisGameController : MonoBehaviour {
 
 
-    
+   
     public LivingParticleArrayController livingParticles;
     public ScanFloorForMatch genericTetranimo;
     public TetrisSpawner tetrisSpawner;
@@ -22,11 +22,12 @@ public class TetrisGameController : MonoBehaviour {
     public TetrisSpawner spawnerLeft, spawnerFront, spawnerRight;
 
     float roundTimer;
+    TetrisExplosion TE;
 
 
 	// Use this for initialization
 	void Start () {
-       
+        TE = GetComponent<TetrisExplosion>();
         spawnerFront = Instantiate(tetrisSpawner, frontSpawn);
         spawnerLeft = Instantiate(tetrisSpawner, leftSpawn);
         spawnerRight = Instantiate(tetrisSpawner, rightSpawn);
@@ -59,6 +60,9 @@ public class TetrisGameController : MonoBehaviour {
             {
                 StartCoroutine(deleteColumn(i));
                 numOfCompleteLines++;
+                TE.startExplode(frontSpawn, 2f);
+                TE.startExplode(leftSpawn, 2f);
+                TE.startExplode(rightSpawn, 2f);
             }
 
         }
@@ -79,6 +83,9 @@ public class TetrisGameController : MonoBehaviour {
             {
                 StartCoroutine(deleteRow(i));
                 numOfCompleteLines++;
+                TE.startExplode(frontSpawn, 2f);
+                TE.startExplode(leftSpawn, 2f);
+                TE.startExplode(rightSpawn, 2f);
             }
 
         }
@@ -110,7 +117,8 @@ public class TetrisGameController : MonoBehaviour {
 
     IEnumerator SpawnFrenzy()
     {
-        Instantiate(genericTetranimo, this.transform);
+
+      //  Instantiate(genericTetranimo, this.transform);
         yield return null;
     }
 

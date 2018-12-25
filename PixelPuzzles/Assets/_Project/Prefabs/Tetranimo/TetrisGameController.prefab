@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 114673508283881946}
   - component: {fileID: 114779553592080896}
   - component: {fileID: 114143808591076728}
+  - component: {fileID: 114991821505238988}
   m_Layer: 0
   m_Name: TetrisGameController
   m_TagString: Untagged
@@ -369,6 +370,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0
   gt: {fileID: 114321937379436894}
+--- !u!114 &114991821505238988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411358750715868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b710de6705348b45b2d35fc73934ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tetrisShapes:
+  - {fileID: 1439642973228124, guid: 87e670d2f8194e24fbdb37a8e6a88277, type: 2}
 --- !u!222 &222070285813990306
 CanvasRenderer:
   m_ObjectHideFlags: 1
