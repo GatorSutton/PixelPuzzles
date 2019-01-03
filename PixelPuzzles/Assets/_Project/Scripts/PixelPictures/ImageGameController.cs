@@ -109,6 +109,7 @@ public class ImageGameController : MonoBehaviour {
 
     IEnumerator playRound()
     {
+
         yield return StartCoroutine(getReady());
         setUpCurrentSpriteList();
         setTileList();
@@ -116,8 +117,10 @@ public class ImageGameController : MonoBehaviour {
         yield return StartCoroutine(countDownTimer(timeToFlip));
         yield return StartCoroutine(prepareForAnswer());
         print("Unanimous Decision");
-        while (answered == false)
+        float timer = 0;
+        while (answered == false && timer < 10)
         {
+            timer += Time.deltaTime;
             yield return null;
         }
         setTilesRevealed();
@@ -191,7 +194,13 @@ public class ImageGameController : MonoBehaviour {
             timer -= Time.deltaTime;
             yield return null;
         }
+        foreach (Tile tile in tileList)
+        {
+            tile.myState = Tile.States.NONE;
+            tile.flipped = false;
+        }
         pB.setPercent(0f);
+ 
     }
 
     void resetImages()

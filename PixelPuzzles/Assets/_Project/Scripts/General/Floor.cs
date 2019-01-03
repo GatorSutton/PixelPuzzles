@@ -9,12 +9,17 @@ public class Floor : MonoBehaviour {
     public int sizeX;
     public int sizeZ;
 
+    public int modularHeight;
+    public int modularWidth;
+    public int localHeight;
+    public int localWidth;
+
 
     [System.NonSerialized]
     private Tile[,] tiles;
     ArduinoCommunicator AC;
     ArduinoCommunicator AC2;
-    ArduinoCommunicator ACSensors;
+    ArduinoBitCommunicator ACSensors;
 
 	// Use this for initialization
 	void Awake () {
@@ -23,9 +28,9 @@ public class Floor : MonoBehaviour {
 
     private void Start()
     {
-       // AC = GameObject.Find("ArduinoCommunicator").GetComponent<ArduinoCommunicator>();
+       // AC = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
        // AC2 = GameObject.Find("ArduinoCommunicator2").GetComponent<ArduinoCommunicator>();
-       // ACSensors = GameObject.Find("ArduinoCommunicatorSensors").GetComponent<ArduinoCommunicator>();
+        ACSensors = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
     }
 
     public List<Tile> getAllTiles()
@@ -146,40 +151,9 @@ public class Floor : MonoBehaviour {
     private void checkForRealPlayer()
     {
 
-        bool[] list = ACSensors.getMessageIN();
+        BitArray list = ACSensors.getMessageIN();
 
         /*
-        for (int x = 0; x < sizeX; x++)
-        {
-            for (int z = 0; z < sizeZ; z++)
-            {
-                tiles[x, z].playerHere = list[(x * sizeZ) + z];
-            }
-            else
-            {
-            tiles[x,z].playerHere = list[(x * 2 + 1) - z];
-            }
-
-        }
-        *
-
-
-        /*
-        for (int x = 0; x < sizeX; x++)
-        {
-            for (int z = 0; z < sizeZ; z++)
-            {
-                if (x % 2 == 0)
-                {
-                    tiles[x, z].playerHere = list[(x * 2) + z];
-                }
-                else
-                {
-                    tiles[x,z].playerHere = list[(x * 2 + 1) - z];
-                }
-            }
-        }
-        */
         if (list.Length == sizeX * sizeZ)
         {
             for (int x = 0; x < sizeX; x++)
@@ -190,8 +164,22 @@ public class Floor : MonoBehaviour {
                 }
             }
         }
-
+        */
+        int count = 0;
+        for (int width = 0; width < modularWidth; width++)
+        {
+            for (int height = 0; height < modularHeight; height++)
+            {
+                for (int x = 0; x < localWidth; x++)
+                {
+                    for (int z = 0; z < localHeight; z++)
+                    {
+                        tiles[x + (width * localWidth), z + (height * localHeight)].playerHere = list[count++];
+                    }
+                }
+            }
         }
+    }
 
     private void setFloorData()
     {
