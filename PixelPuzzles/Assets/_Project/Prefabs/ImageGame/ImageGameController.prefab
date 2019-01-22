@@ -816,10 +816,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1099485079253350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251b526ac355a324d84d84d538c40a1c, type: 3}
+  m_Script: {fileID: 11500000, guid: b491e744a4ba4d24c91acc8ad9670f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Pixel Pictures
+  mName: Picture Reveal
 --- !u!114 &114197417171864008
 MonoBehaviour:
   m_ObjectHideFlags: 1

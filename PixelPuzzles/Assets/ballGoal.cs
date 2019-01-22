@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GUIshake : MonoBehaviour {
+public class ballGoal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +13,12 @@ public class GUIshake : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Ball")
+        {
+            Debug.Log("WIN");
+        }
+    }
 }

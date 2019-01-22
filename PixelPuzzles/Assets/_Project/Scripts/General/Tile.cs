@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour {
 
     public float timeBetweenFlicker;
     // public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
-    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON};
+    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, PINK, WHITE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON, MOLE};
     //[System.NonSerialized]
     public States myState = States.NONE;
     public Material[] materials;
@@ -29,6 +29,7 @@ public class Tile : MonoBehaviour {
 	void Update () {
         updateMaterial();
         checkForPlayerOnFlip();
+        checkForPlayerOnMole();
 	}
 
     private void OnCollisionEnter(Collision collision)
@@ -164,18 +165,18 @@ public class Tile : MonoBehaviour {
             case States.NOTEBARON:
                 rend.material = materials[6];
                 break;
+            case States.MOLE:
+                rend.material = materials[1];
+                break;
                 
                 
         }
         
-
         if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR)
         {
             rend.material = materials[5];
         }
 
-
-        
     }
 
     public bool isPlayerHere()
@@ -190,6 +191,14 @@ public class Tile : MonoBehaviour {
         {
             myState = flippedState;
             flipped = true;
+        }
+    }
+
+    private void checkForPlayerOnMole()
+    {
+        if (playerHere && myState == States.MOLE)
+        {
+            myState = States.NONE;
         }
     }
 

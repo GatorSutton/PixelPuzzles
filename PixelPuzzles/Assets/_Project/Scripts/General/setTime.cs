@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class setTime : MonoBehaviour {
 
     Text text;
-    public float time;
+    float time;
     public GameTimer gt;
 
 	// Use this for initialization

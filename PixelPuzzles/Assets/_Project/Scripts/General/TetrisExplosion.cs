@@ -23,7 +23,7 @@ public class TetrisExplosion : MonoBehaviour {
         while(timer < time)
         {
             timer += Time.deltaTime;
-            GameObject shape = Instantiate(tetrisShapes[Random.Range(0, tetrisShapes.Count)], location);
+            Instantiate(tetrisShapes[Random.Range(0, tetrisShapes.Count)], location);
             yield return null;
         }
     }

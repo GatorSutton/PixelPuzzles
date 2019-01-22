@@ -188,7 +188,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1411358750715868}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.16427295, y: 0, z: 0, w: 0.98641497}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -197,7 +197,7 @@ Transform:
   - {fileID: 224048531387992838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.91, y: 0, z: 0}
 --- !u!4 &4836717214387734
 Transform:
   m_ObjectHideFlags: 1
@@ -330,10 +330,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411358750715868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251b526ac355a324d84d84d538c40a1c, type: 3}
+  m_Script: {fileID: 11500000, guid: b491e744a4ba4d24c91acc8ad9670f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Tetra Tactics
+  mName: Tetromino Tactics
 --- !u!114 &114321937379436894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c23607ba0c0a4696b4e7d82030f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 10
+  roundTime: 120
 --- !u!114 &114332625186973064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,7 +464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0df7077558be3b43b33ffb247d7711c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
   gt: {fileID: 114321937379436894}
 --- !u!114 &114991821505238988
 MonoBehaviour:
