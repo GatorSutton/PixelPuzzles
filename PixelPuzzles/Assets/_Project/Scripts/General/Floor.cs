@@ -30,7 +30,7 @@ public class Floor : MonoBehaviour {
     {
        // AC = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
        // AC2 = GameObject.Find("ArduinoCommunicator2").GetComponent<ArduinoCommunicator>();
-        ACSensors = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
+       // ACSensors = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
     }
 
     public List<Tile> getAllTiles()

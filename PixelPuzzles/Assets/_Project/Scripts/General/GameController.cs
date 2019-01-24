@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameController : MonoBehaviour {
 
-
-    public textController tC;
+    public TextMeshProUGUI message;
     public List<GameObject> gameList = new List<GameObject>();
     public int numOfRounds;
     int roundNumber = 0;
+    public GameObject readySwitch;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,17 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if(Time.timeScale == 1.0f)
+            {
+                Time.timeScale = 10.0f;
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+            }
+        }
 	}
 
     IEnumerator gameLoop()
@@ -26,11 +37,13 @@ public class GameController : MonoBehaviour {
         {
             foreach (GameObject game in gameList)
             {
-                //print the game and wait for rea
-                tC.setText(game.GetComponent<nameToBeDisplayed>().name);
-                yield return new WaitForSeconds(1f);
-                tC.startFadeOffScreen();
-                yield return new WaitForSeconds(1f);
+                var currentSwitch = Instantiate(readySwitch);
+                yield return new WaitUntil(() => currentSwitch == null);
+
+                message.SetText(game.GetComponent<nameToBeDisplayed>().mName);
+                yield return new WaitForSeconds(3f);
+                message.ClearMesh();
+
                 var currentGame = Instantiate(game);
                 yield return new WaitUntil(() => currentGame == null);
             }

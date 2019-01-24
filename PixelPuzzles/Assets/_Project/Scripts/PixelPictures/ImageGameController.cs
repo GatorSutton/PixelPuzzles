@@ -35,7 +35,7 @@ public class ImageGameController : MonoBehaviour {
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         tileList = floor.getAllTiles();
 
-        StartCoroutine(multipleRounds(3));
+        StartCoroutine(multipleRounds(1));
 
 	}
 

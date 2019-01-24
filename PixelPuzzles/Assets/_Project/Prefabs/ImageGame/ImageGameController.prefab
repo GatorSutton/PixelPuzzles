@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b491e744a4ba4d24c91acc8ad9670f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mName: Picture Reveal
+  mName: Flip and Focus
 --- !u!114 &114197417171864008
 MonoBehaviour:
   m_ObjectHideFlags: 1

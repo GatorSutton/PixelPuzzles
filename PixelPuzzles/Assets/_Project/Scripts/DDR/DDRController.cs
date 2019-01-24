@@ -75,7 +75,7 @@ public class DDRController : MonoBehaviour
 
         UpdateLines();
 
-        rhythmTool.DrawDebugLines();
+       // rhythmTool.DrawDebugLines();
     }
 
     private void UpdateLines()

@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b491e744a4ba4d24c91acc8ad9670f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mName: Dance Dance
+  mName: Team Rhythm
 --- !u!114 &114557104487678810
 MonoBehaviour:
   m_ObjectHideFlags: 1

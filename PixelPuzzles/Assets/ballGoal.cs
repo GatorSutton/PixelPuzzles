@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ballGoal : MonoBehaviour {
 
+    public GameObject ballGameController;
+
 	// Use this for initialization
 	void Start () {
-		
+        ballGameController = transform.parent.parent.parent.parent.gameObject;
 	}
 	
 	// Update is called once per frame
@@ -16,9 +18,10 @@ public class ballGoal : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "Ball")
+        if(other.tag == "ball")
         {
             Debug.Log("WIN");
+            Destroy(ballGameController);
         }
     }
 }

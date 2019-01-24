@@ -6,6 +6,8 @@ public class mazeController : MonoBehaviour
 {
 
     public float tiltFactor;
+    public Transform BallSpawn;
+    public GameObject Ball;
 
     Floor floor;
     List<Tile> playerTiles = new List<Tile>();
@@ -15,6 +17,7 @@ public class mazeController : MonoBehaviour
     void Start()
     {
         floor = GameObject.Find("Floor").GetComponent<Floor>();
+        Instantiate(Ball, BallSpawn);
     }
 
     //Find all the tiles that have a player on them
@@ -46,10 +49,9 @@ public class mazeController : MonoBehaviour
         {
             averageVector /= playerDistances.Count;
         }   
-        Debug.Log(averageVector);
 
-        transform.eulerAngles = new Vector3(averageVector.y * tiltFactor, -averageVector.x * tiltFactor, 0f);
-
+       // transform.eulerAngles = new Vector3(averageVector.y * tiltFactor, -averageVector.x * tiltFactor, 0f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(averageVector.y * tiltFactor, -averageVector.x * tiltFactor, 0f), .1f * tiltFactor);
     }
 
     Vector2 calculateVector(Tile tile)

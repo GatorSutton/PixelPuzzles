@@ -23,6 +23,7 @@ public class TetrisGameController : MonoBehaviour {
 
     float roundTimer;
     TetrisExplosion TE;
+    int lineCount;
 
 
 	// Use this for initialization
@@ -40,6 +41,7 @@ public class TetrisGameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         checkForClearedLines();
+        checkForWin();
 	}
 
     void checkForClearedLines()
@@ -132,6 +134,14 @@ public class TetrisGameController : MonoBehaviour {
     private void OnDestroy()
     {
         floor.clearAllTiles();
+    }
+
+    void checkForWin()
+    {
+        if(lineCount > 1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
