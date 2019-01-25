@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Maze
+  m_Name: Maze Passage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,18 +37,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fafb9086b6f7ec4db5812b2b280d096, type: 3}
+  m_Script: {fileID: 11500000, guid: 33b9899b1ac026644ab887789b3083f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size:
-    x: 5
-    z: 5
-  cellPrefab: {fileID: 11400000, guid: ea9ee73852bcc534286ab6743a7c3f37, type: 2}
-  generationStepDelay: 0.01
-  passagePrefab: {fileID: 11400000, guid: 9042073a6ca492b40913664ff181d1c5, type: 2}
-  wallPrefab: {fileID: 11400000, guid: 04755eb5c0946da438f4ea1b4a50f6d4, type: 2}
-  spawnPoint: {fileID: 0}
-  goalPoint: {fileID: 0}
+  cell: {fileID: 0}
+  otherCell: {fileID: 0}
+  direction: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

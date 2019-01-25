@@ -6,7 +6,7 @@ public class ballLabyrinthController : MonoBehaviour {
 
     //A maze with a ball
     //Maze will rotate based on the position of the players on the board
-    public GameObject maze;
+    public Maze mazePrefab;
     public GameObject ball;
     public Transform MazeSpawn;
 
@@ -14,8 +14,10 @@ public class ballLabyrinthController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        mC = Instantiate(maze, MazeSpawn).GetComponent<mazeController>();
-	}
+        //mC = Instantiate(mazePrefab, MazeSpawn).GetComponent<mazeController>();
+        var mazeInstance = Instantiate(mazePrefab, MazeSpawn) as Maze;
+        StartCoroutine(mazeInstance.Generate());
+    }
 	
 	// Update is called once per frame
 	void Update () {

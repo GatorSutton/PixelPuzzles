@@ -139,3 +139,6 @@ MonoBehaviour:
   rend: {fileID: 23998497300806786}
   playerHere: 0
   flippedState: 0
+  flipped: 0
+  hitFrame: 0
+  note: {fileID: 0}

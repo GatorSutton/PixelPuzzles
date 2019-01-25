@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28948dddf8a118543b3f56324c9b5f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maze: {fileID: 1521146496265298, guid: 954ee25291d7b1944af787c56686f569, type: 2}
+  mazePrefab: {fileID: 11400000, guid: 954ee25291d7b1944af787c56686f569, type: 2}
   ball: {fileID: 1723111871973922, guid: c6a03218169c3eb4b9568504f75ec753, type: 2}
   MazeSpawn: {fileID: 4556650227104198}
 --- !u!114 &114716633925419834
