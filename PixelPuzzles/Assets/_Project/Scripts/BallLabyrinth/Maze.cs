@@ -6,23 +6,26 @@ using System.Linq;
 
 public class Maze : MonoBehaviour {
 
-	public IntVector2 size;
+    public IntVector2 size;
 
-	public MazeCell cellPrefab;
+    public MazeCell cellPrefab;
 
-	public float generationStepDelay;
+    public float generationStepDelay;
 
-	public MazePassage passagePrefab;
-	public MazeWall wallPrefab;
+    public MazePassage passagePrefab;
+    public MazeWall wallPrefab;
 
-	private MazeCell[,] cells;
+    private MazeCell[,] cells;
 
     //Created for Ball Labyrinth
     private List<MazeCell> cellList = new List<MazeCell>();
-    [SerializeField]
     private Transform spawnPoint;
+    public Transform SpawnPoint { get { return spawnPoint; } }
     [SerializeField]
     private Transform goalPoint;
+    public Transform GoalPoint { get { return goalPoint; } }
+
+    
 
 	public IntVector2 RandomCoordinates {
 		get {

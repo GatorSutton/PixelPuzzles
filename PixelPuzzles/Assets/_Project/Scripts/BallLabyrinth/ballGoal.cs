@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ballGoal : MonoBehaviour {
 
-    public GameObject ballGameController;
+    GameObject ballGameController;
 
 	// Use this for initialization
 	void Start () {
