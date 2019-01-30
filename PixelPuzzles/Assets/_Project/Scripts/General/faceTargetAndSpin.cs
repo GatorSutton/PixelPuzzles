@@ -7,6 +7,7 @@ public class faceTargetAndSpin : MonoBehaviour
 
     public float rotationSpeed;
     private Transform target;
+    private Vector3 rotatingVector = Vector3.up;
 
 
 
@@ -19,7 +20,10 @@ public class faceTargetAndSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+      //  transform.LookAt(2 * transform.position - target.position, rotatingVector);
+        transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed, Space.Self);
+       // rotatingVector = Quaternion.Euler(Vector3.right) * rotatingVector;
+  
     }
 
 }

@@ -6,18 +6,26 @@ using System.Collections.Generic;
 /// Simple class containing a GameObject and an index.
 /// Used to synchronize a GameObject to a frame from RhythmTool.
 /// </summary>
-public class Line : MonoBehaviour {
+/// 
 
-    public int index { get; private set; }
+namespace Rhythm
+{
 
-    public void Init(Color color, float opacity, int index)
+    public class Line : MonoBehaviour
     {
-        this.index = index;
 
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        color = Color.Lerp(Color.black, color, opacity * .01f);
-        meshRenderer.material.SetColor("_TintColor", color);
+        public int index { get; private set; }
 
-        transform.localScale = new Vector3(.5f, 10, .5f);
+        public void Init(Color color, float opacity, int index)
+        {
+            this.index = index;
+
+            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+            color = Color.Lerp(Color.black, color, opacity * .01f);
+            meshRenderer.material.SetColor("_TintColor", color);
+
+            transform.localScale = new Vector3(.5f, 10, .5f);
+        }
     }
 }
+

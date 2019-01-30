@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BlueLight
+  m_Name: PinkLight
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.036978673, b: 0.9245283, a: 1}
-    - _EmissionColor: {r: 2.9960785, g: 1.1294118, b: 2.682353, a: 1}
+    - _Color: {r: 0.9254902, g: 0, b: 0.8673439, a: 1}
+    - _EmissionColor: {r: 2.1185474, g: 0.79861474, b: 1.8967099, a: 1}

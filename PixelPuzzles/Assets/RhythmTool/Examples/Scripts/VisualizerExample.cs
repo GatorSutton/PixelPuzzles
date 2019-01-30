@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Rhythm;
 
 public class VisualizerExample : MonoBehaviour
 {
