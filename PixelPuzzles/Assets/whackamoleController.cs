@@ -38,17 +38,17 @@ public class whackamoleController : MonoBehaviour {
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(3f);
-            spawnRandomMole();
+            spawnRandomMoles(2);
         }
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(2f);
-            spawnRandomMole();
+            spawnRandomMoles(3);
         }
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(1f);
-            spawnRandomMole();
+            spawnRandomMoles(4);
         }
 
         yield return new WaitForSeconds(5f);
@@ -56,13 +56,13 @@ public class whackamoleController : MonoBehaviour {
         for (int i = 0; i < 25; i++)
         {
             yield return new WaitForSeconds(.1f);
-            spawnRandomMole();
+            spawnRandomMoles(1);
         }
 
         yield return null;
     }
 
-    void spawnRandomMole()
+    void spawnRandomMoles(int count)
     {
         allTiles = floor.getAllTiles();
         for(int i = allTiles.Count-1; i >= 0; i--)          //remove all spots where there is a mole or player
@@ -73,9 +73,13 @@ public class whackamoleController : MonoBehaviour {
             }
         }
 
-        int randomTile = Random.Range(0, allTiles.Count);
-        allTiles[randomTile].myState = Tile.States.MOLE;
-        StartCoroutine(moleReturnsToTheEarth(5f, allTiles[randomTile]));
+        for (int i = 0; i < count; i++)
+        {
+            int randomTile = Random.Range(0, allTiles.Count);
+            allTiles[randomTile].myState = Tile.States.MOLE;
+            StartCoroutine(moleReturnsToTheEarth(5f, allTiles[randomTile]));
+        }
+
 
     }
 

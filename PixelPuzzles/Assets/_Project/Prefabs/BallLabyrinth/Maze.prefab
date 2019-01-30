@@ -44,10 +44,9 @@ MonoBehaviour:
     x: 5
     z: 5
   cellPrefab: {fileID: 11400000, guid: ea9ee73852bcc534286ab6743a7c3f37, type: 2}
-  generationStepDelay: 0.01
+  generationStepDelay: 0
   passagePrefab: {fileID: 11400000, guid: 9042073a6ca492b40913664ff181d1c5, type: 2}
   wallPrefab: {fileID: 11400000, guid: 04755eb5c0946da438f4ea1b4a50f6d4, type: 2}
-  spawnPoint: {fileID: 0}
   goalPoint: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

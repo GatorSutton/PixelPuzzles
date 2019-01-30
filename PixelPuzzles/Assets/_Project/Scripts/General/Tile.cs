@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour {
     public Material[] materials;
     public MeshRenderer rend;
 
+    bool lastFramePlayerHere = false;
     public bool playerHere = false;
     public States flippedState;
     public bool flipped = false;
@@ -30,8 +31,10 @@ public class Tile : MonoBehaviour {
         updateMaterial();
         checkForPlayerOnFlip();
         checkForPlayerOnMole();
+        checkForPlayerHit();
 	}
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.tag == "Player")
@@ -39,6 +42,7 @@ public class Tile : MonoBehaviour {
             playerHit();
         }
     }
+    */
 
 
     private void OnCollisionStay(Collision collision)
@@ -210,6 +214,15 @@ public class Tile : MonoBehaviour {
             print("notehit");
             note.strikeNote();
         }
+    }
+
+    private void checkForPlayerHit()
+    {
+        if (lastFramePlayerHere == false && playerHere == true)
+        {
+            playerHit();
+        }
+        lastFramePlayerHere = playerHere;
     }
 
 }

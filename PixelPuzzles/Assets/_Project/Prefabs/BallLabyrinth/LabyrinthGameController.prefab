@@ -255,6 +255,7 @@ MonoBehaviour:
   GoalPrefab: {fileID: 1655598977711128, guid: ae8c17f093eb8b64bb2cf22619e2ad4f, type: 2}
   MazeSpawn: {fileID: 4556650227104198}
   MazeDestination: {fileID: 4377736489859042}
+  dropInSpeed: 6
 --- !u!114 &114716633925419834
 MonoBehaviour:
   m_ObjectHideFlags: 1

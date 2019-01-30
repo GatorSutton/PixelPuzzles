@@ -11,6 +11,7 @@ public class ballLabyrinthController : MonoBehaviour {
     public GameObject GoalPrefab;
     public Transform MazeSpawn;
     public Transform MazeDestination;
+    public float dropInSpeed;
 
 
     mazeController mC;
@@ -36,7 +37,7 @@ public class ballLabyrinthController : MonoBehaviour {
         mazeInstance.transform.eulerAngles = new Vector3(-90f, 0f, 0f);
         while (Vector3.Distance(mazeInstance.transform.position, MazeDestination.transform.position) > .1f)
         {
-            mazeInstance.transform.Translate(Vector3.back * Time.deltaTime * 3);
+            mazeInstance.transform.Translate(Vector3.back * Time.deltaTime * dropInSpeed);
             yield return null;
         }
 

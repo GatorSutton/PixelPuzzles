@@ -565,7 +565,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099485079253350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.7098377, y: 5.6801834, z: -9.543092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4002646229958348}
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   - {fileID: 114935529974200144}
   - {fileID: 114654471536240380}
   - {fileID: 114954294255687550}
-  timeToFlip: 3
+  timeToFlip: 20
   pB: {fileID: 114472185139609368}
   pBT: {fileID: 114173093551825604}
 --- !u!114 &114541228281394006
