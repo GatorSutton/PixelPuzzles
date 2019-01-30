@@ -14,7 +14,7 @@ public class ScoreController : MonoBehaviour {
     {
         currentScore += amountToAdd;
         OnScoreChanged(currentScore);
-        Debug.Log("New Score: " + currentScore);
+
     }
 
 }

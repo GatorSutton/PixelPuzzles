@@ -373,7 +373,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325057985181236}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -25, y: -25, z: 10}
+  m_LocalPosition: {x: -25, y: -25, z: 25}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 4054603294375156}
@@ -875,9 +875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6acdbb87560bd4eaacf724c0590440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiltFactor: 5
-  BallSpawn: {fileID: 4915654866657290}
-  Ball: {fileID: 1723111871973922, guid: c6a03218169c3eb4b9568504f75ec753, type: 2}
 --- !u!114 &114772835372366196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -925,7 +922,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681ddcd0a4971d142b54c14f5000ff1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballGameController: {fileID: 0}
 --- !u!198 &198269939455391180
 ParticleSystem:
   m_ObjectHideFlags: 1

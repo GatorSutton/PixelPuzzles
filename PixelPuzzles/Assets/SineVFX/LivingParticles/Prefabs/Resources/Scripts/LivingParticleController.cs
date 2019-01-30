@@ -14,10 +14,13 @@ public class LivingParticleController : MonoBehaviour {
 	}
 	
 	void Update () {
-        if(affector == null)
+        if (affector == null)
         {
-          //  affector = GameObject.FindGameObjectWithTag("affector").transform;
+            //  affector = GameObject.FindGameObjectWithTag("affector").transform;
         }
-        psr.material.SetVector("_Affector", affector.position);
+        else
+        {
+            psr.material.SetVector("_Affector", affector.position);
+        }
     }
 }
