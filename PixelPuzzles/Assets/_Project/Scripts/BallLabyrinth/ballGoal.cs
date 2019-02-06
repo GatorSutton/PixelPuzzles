@@ -21,6 +21,7 @@ public class ballGoal : MonoBehaviour {
         if(other.tag == "ball")
         {
             Debug.Log("WIN");
+            ScoreController.AddScore(5000);
             Destroy(ballGameController);
         }
     }

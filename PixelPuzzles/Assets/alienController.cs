@@ -12,16 +12,21 @@ public class alienController : MonoBehaviour {
     Floor floor;
     [SerializeField]
     List<Tile> allTiles = new List<Tile>();
+    Tile tile;
+    SplineWalker alienPathWalker;
+    bool vulnerable = true;
 
 
     // Use this for initialization
     void Start () {
         floor = GameObject.Find("Floor").GetComponent<Floor>();
+        spawnRandomMole();
+        alienPathWalker = GetComponent<SplineWalker>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        checkForHit();
 	}
 
 
@@ -38,6 +43,7 @@ public class alienController : MonoBehaviour {
 
         int randomTile = Random.Range(0, allTiles.Count);
         allTiles[randomTile].myState = Tile.States.MOLE;
+        tile = allTiles[randomTile];
         StartCoroutine(moleReturnsToTheEarth(5f, allTiles[randomTile]));
     }
 
@@ -48,6 +54,20 @@ public class alienController : MonoBehaviour {
         if (tile.myState == Tile.States.MOLE)
         {
             tile.myState = Tile.States.NONE;
+        }
+        vulnerable = false;
+
+        
+        
+        
+    }
+
+    void checkForHit()
+    {
+        if (vulnerable && tile.myState == Tile.States.NONE)
+        {
+            ScoreController.AddScore(100);
+            Destroy(this.gameObject);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class readySwitch : MonoBehaviour {
 
@@ -11,7 +12,9 @@ public class readySwitch : MonoBehaviour {
     [SerializeField]
     List<Tile> notSelectorTiles = new List<Tile>();
     Floor floor;
-    public float percentage;
+    float time;
+    public float timeToSync;
+    public Slider slider;
 
     void Awake()
     {
@@ -22,7 +25,7 @@ public class readySwitch : MonoBehaviour {
     // Use this for initialization
     void Start () {
         boxCollider = GetComponent<BoxCollider>();
-        percentage = 0;
+        time = 0;
     }
 	
 	// Update is called once per frame
@@ -51,19 +54,21 @@ public class readySwitch : MonoBehaviour {
             }
         }
 
-        if (onButton && !offButton && percentage < 1)
+        if (onButton && !offButton && time < timeToSync)
         {
-            percentage += Time.deltaTime * .3f;
+            time += Time.deltaTime * .3f;
         }
-        else if (percentage > 0 && percentage < 1)
+        else if (time > 0 && time < timeToSync)
         {
-            percentage -= Time.deltaTime * .5f;
+            time -= Time.deltaTime * .5f;
         }
+
+        slider.value = time / timeToSync;
     }
 
     private void checkForSelected()
     {
-        if (percentage >= 1)
+        if (time >= timeToSync)
         {
             Destroy(this.gameObject);
         }

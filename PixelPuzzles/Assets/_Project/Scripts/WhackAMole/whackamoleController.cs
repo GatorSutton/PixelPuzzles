@@ -12,6 +12,9 @@ public class whackamoleController : MonoBehaviour {
     Floor floor;
     [SerializeField]
     List<Tile> allTiles = new List<Tile>();
+    public GameObject alienPrefab;
+    public BezierSpline leftPath;
+    public BezierSpline rightPath;
 
 
     // Use this for initialization
@@ -64,6 +67,7 @@ public class whackamoleController : MonoBehaviour {
 
     void spawnRandomMoles(int count)
     {
+        /*
         allTiles = floor.getAllTiles();
         for(int i = allTiles.Count-1; i >= 0; i--)          //remove all spots where there is a mole or player
         {
@@ -79,8 +83,17 @@ public class whackamoleController : MonoBehaviour {
             allTiles[randomTile].myState = Tile.States.MOLE;
             StartCoroutine(moleReturnsToTheEarth(5f, allTiles[randomTile]));
         }
-
-
+        */
+        GameObject alien = Instantiate(alienPrefab, this.transform);
+        if (Random.Range(0, 2) == 0)
+        {
+            alien.GetComponent<SplineWalker>().spline = leftPath;
+        }
+        else
+        {
+            alien.GetComponent<SplineWalker>().spline = rightPath;
+        }
+        
     }
 
 

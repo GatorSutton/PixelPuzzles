@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ImageGameController : MonoBehaviour {
 
@@ -28,6 +29,8 @@ public class ImageGameController : MonoBehaviour {
     public float timeToFlip;
     public progressBar pB;
     public progressBarText pBT;
+
+    public Slider decisionSlider;
     
 
     // Use this for initialization
@@ -117,17 +120,25 @@ public class ImageGameController : MonoBehaviour {
         yield return StartCoroutine(countDownTimer(timeToFlip));
         yield return StartCoroutine(prepareForAnswer());
         print("Unanimous Decision");
-        float timer = 0;
-        while (answered == false && timer < 10)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
+        yield return decisionTimer(10);
         setTilesRevealed();
         yield return new WaitForSeconds(5f);
         resetImages();
         answered = false;
 
+    }
+
+    IEnumerator decisionTimer(float timeToDecide)
+    {
+        float timer = timeToDecide;
+        while(answered == false && timer > 0)
+        {
+            timer -= Time.deltaTime;
+            decisionSlider.value = (timer / timeToDecide);
+            yield return null;
+        }
+        // decisionPB.setPercent(0f);
+        decisionSlider.value = 0;
     }
 
     IEnumerator multipleRounds(int numOfRounds)
