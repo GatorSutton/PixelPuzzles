@@ -165,20 +165,20 @@ public class Floor : MonoBehaviour {
             }
         }
         */
-        int count = 0;
-        for (int width = 0; width < modularWidth; width++)
-        {
-            for (int height = 0; height < modularHeight; height++)
+            int count = 0;
+            for (int width = 0; width < modularWidth; width++)
             {
-                for (int x = 0; x < localWidth; x++)
+                for (int height = 0; height < modularHeight; height++)
                 {
-                    for (int z = 0; z < localHeight; z++)
+                    for (int x = 0; x < localWidth; x++)
                     {
-                        tiles[x + (width * localWidth), z + (height * localHeight)].playerHere = list[count++];
+                        for (int z = 0; z < localHeight; z++)
+                        {
+                            tiles[x + (width * localWidth), z + (height * localHeight)].playerHere = list[count++];
+                        }
                     }
                 }
             }
-        }
     }
 
     private void setFloorData()

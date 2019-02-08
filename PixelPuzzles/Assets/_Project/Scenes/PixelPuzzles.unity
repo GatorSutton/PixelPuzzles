@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad157513cecae24390a10497fe00800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM5
+  portName: \\.\COM10
   baudRate: 115200
   messageListener: {fileID: 0}
   reconnectionDelay: 1000
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad157513cecae24390a10497fe00800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM6
+  portName: COM8
   baudRate: 115200
   messageListener: {fileID: 0}
   reconnectionDelay: 1000
