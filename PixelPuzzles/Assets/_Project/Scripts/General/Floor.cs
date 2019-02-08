@@ -28,9 +28,9 @@ public class Floor : MonoBehaviour {
 
     private void Start()
     {
-       // AC = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
+        AC = GameObject.Find("ArduinoByteSender").GetComponent<ArduinoCommunicator>();
        // AC2 = GameObject.Find("ArduinoCommunicator2").GetComponent<ArduinoCommunicator>();
-       // ACSensors = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
+        ACSensors = GameObject.Find("ArduinoBitListener").GetComponent<ArduinoBitCommunicator>();
     }
 
     public List<Tile> getAllTiles()
@@ -203,7 +203,7 @@ public class Floor : MonoBehaviour {
 
         string output = Encoding.UTF8.GetString(list, 0, sizeX*sizeZ);
         AC.setMessageOUT(output);
-        AC2.setMessageOUT(output);
+       // AC2.setMessageOUT(output);
     }
      
 }

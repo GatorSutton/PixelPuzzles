@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour {
 
     public float timeBetweenFlicker;
     // public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
-    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, PINK, WHITE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON, MOLE};
+    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, WHITE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON, MOLE};
     //[System.NonSerialized]
     public States myState = States.NONE;
     public Material[] materials;

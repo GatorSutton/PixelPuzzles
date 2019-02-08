@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreTextEditor : MonoBehaviour {
 
     Text text;
+    TextMeshProUGUI m_Text;
     int Score;
     int displayScore;
 
     // Use this for initialization
     void Start() {
-        text = GetComponent<Text>();
+        m_Text = GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -47,8 +49,9 @@ public class ScoreTextEditor : MonoBehaviour {
             {
                 displayScore++;
             }
-           
-            text.text = displayScore.ToString();
+
+            // text.text = displayScore.ToString();
+            m_Text.text = displayScore.ToString();
             yield return new WaitForEndOfFrame();
         }
         

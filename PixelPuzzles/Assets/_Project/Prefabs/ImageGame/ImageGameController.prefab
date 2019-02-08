@@ -1163,7 +1163,7 @@ MonoBehaviour:
   - {fileID: 114935529974200144}
   - {fileID: 114654471536240380}
   - {fileID: 114954294255687550}
-  timeToFlip: 5
+  timeToFlip: 20
   pB: {fileID: 114472185139609368}
   pBT: {fileID: 114173093551825604}
   decisionSlider: {fileID: 114848256865662764}
