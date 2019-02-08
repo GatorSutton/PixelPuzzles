@@ -191,10 +191,12 @@ public class Floor : MonoBehaviour {
         {
             for (int z = 0; z < sizeZ; z++)
             {
-                value = (byte)(tiles[x, z].myState + 48);
+                // value = (byte)(tiles[x, z].myState + 48);
+                value = (byte)TileColors.ColorToChar(TileColors.TileStateToColor(tiles[x, z].myState));
                 if (tiles[x, z].myState == Tile.States.NONE && tiles[x, z].isPlayerHere())
                 {
-                    value = 70;
+                    //value = 70;
+                    value = (byte)TileColors.ColorToChar(TileColors.Color.Blue);
                 }
                 list[(x * sizeZ) + z] = value;
             }
