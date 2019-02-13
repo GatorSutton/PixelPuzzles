@@ -12,6 +12,7 @@ public class DDRController : MonoBehaviour
     public List<AudioClip> audioClips;
     public float zOffset;
     public int frameOffset;
+    public GameObject NoteBar;
 
     private Floor floor;
     private List<Line> lines;
@@ -21,6 +22,7 @@ public class DDRController : MonoBehaviour
     void Start()
     {
         floor = GameObject.Find("Floor").GetComponent<Floor>();
+        spawnNoteBar();
         currentSong = -1;
         Application.runInBackground = true;
 
@@ -181,5 +183,11 @@ public class DDRController : MonoBehaviour
     private void OnDestroy()
     {
         floor.clearAllTiles();
+    }
+
+    void spawnNoteBar()
+    {
+        GameObject noteBar = Instantiate(NoteBar, floor.getTile(0, 1).GetComponent<Transform>());
+        noteBar.transform.parent = null;
     }
 }
