@@ -903,7 +903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1203234168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +920,6 @@ MonoBehaviour:
   - {fileID: 1497960064512628, guid: ba79bc781a1a85d4685abb45a327700e, type: 2}
   - {fileID: 1952766173955196, guid: 2e6ea648ac59b0c4eb1a22d89f1cc1bb, type: 2}
   - {fileID: 1411358750715868, guid: 975890ca767c1c546af87b5ae521e215, type: 2}
-  - {fileID: 1099485079253350, guid: 6a5a8702df364614ea8d4a001795dbda, type: 2}
   - {fileID: 1825289263875906, guid: 3a4c752052f1ebb4e8ca5b6e71ff3ab3, type: 2}
   numOfRounds: 3
   readySwitch: {fileID: 1847326487449230, guid: 2e714007a5b10eb498308524e0e28280,

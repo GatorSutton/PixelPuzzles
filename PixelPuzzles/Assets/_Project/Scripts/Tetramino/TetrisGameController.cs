@@ -30,8 +30,8 @@ public class TetrisGameController : MonoBehaviour {
 	void Start () {
         TE = GetComponent<TetrisExplosion>();
         spawnerFront = Instantiate(tetrisSpawner, frontSpawn);
-        spawnerLeft = Instantiate(tetrisSpawner, leftSpawn);
-        spawnerRight = Instantiate(tetrisSpawner, rightSpawn);
+       // spawnerLeft = Instantiate(tetrisSpawner, leftSpawn);
+       // spawnerRight = Instantiate(tetrisSpawner, rightSpawn);
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         arrayOfTiles = floor.getArrayOfTiles();
 

@@ -39,7 +39,7 @@ public class grabBagRandom : MonoBehaviour {
         {
             bagOfShapes.Add(shape);
         }
-        if (tGC.spawnerLeft.currentShape != TetrisDefinitions.Shapes.None)
+        if (tGC.spawnerLeft != null && tGC.spawnerLeft.currentShape != TetrisDefinitions.Shapes.None)
         {
             bagOfShapes.Remove(tGC.spawnerRight.currentShape);
             bagOfShapes.Remove(tGC.spawnerFront.currentShape);
