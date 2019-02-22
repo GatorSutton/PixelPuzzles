@@ -5,7 +5,7 @@ using System.Linq;
 
 public class DepthFirstSearch {
 
-    static int ROW = 12, COL = 12;
+    static int ROW = 8, COL = 8;
 
     static bool isSafe(Tile[,] M, int row,
                     int col, bool[,] visited)

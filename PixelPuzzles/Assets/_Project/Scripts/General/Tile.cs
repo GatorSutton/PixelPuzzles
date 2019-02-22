@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour {
 
     public float timeBetweenFlicker;
     // public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
-    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, WHITE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON, MOLE};
+    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, WHITE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON, NOTEBARHIT,  MOLE};
     //[System.NonSerialized]
     public States myState = States.NONE;
     public Material[] materials;
@@ -169,6 +169,9 @@ public class Tile : MonoBehaviour {
             case States.NOTEBARON:
                 rend.material = materials[6];
                 break;
+            case States.NOTEBARHIT:
+                rend.material = materials[4];
+                break;
             case States.MOLE:
                 rend.material = materials[1];
                 break;
@@ -176,7 +179,7 @@ public class Tile : MonoBehaviour {
                 
         }
         
-        if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR)
+        if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR && myState != States.NOTEBARHIT)
         {
             rend.material = materials[5];
         }
@@ -213,6 +216,9 @@ public class Tile : MonoBehaviour {
         {
             print("notehit");
             note.strikeNote();
+            //coroutine that flashes the tile and then returns it to a notebar status
+            StartCoroutine("NoteHitFeedback");
+
         }
     }
 
@@ -223,6 +229,13 @@ public class Tile : MonoBehaviour {
             playerHit();
         }
         lastFramePlayerHere = playerHere;
+    }
+
+    IEnumerator NoteHitFeedback()
+    {
+        myState = States.NOTEBARHIT;
+        yield return new WaitForSeconds(.2f);
+        myState = States.NOTEBAROFF;
     }
 
 }

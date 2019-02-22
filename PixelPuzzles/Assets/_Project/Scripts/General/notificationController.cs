@@ -29,13 +29,11 @@ public class notificationController : MonoBehaviour {
     void OnEnable()
     {
         noteController.OnNoteStrike += addToHitsCount;
-        //noteController.OnNoteMiss += noteMissed;
     }
 
 
     void OnDisable()
     {
         noteController.OnNoteStrike -= addToHitsCount;
-        //noteController.OnNoteMiss -= noteMissed;
     }
 }

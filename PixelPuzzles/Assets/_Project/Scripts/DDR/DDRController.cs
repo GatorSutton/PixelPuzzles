@@ -91,8 +91,14 @@ public class DDRController : MonoBehaviour
                 Destroy(line.gameObject);
                 toRemove.Add(line);
             }
+
+            if(line == null)
+            {
+                toRemove.Add(line);
+            }
         }
 
+       
         foreach (Line line in toRemove)
             lines.Remove(line);
 

@@ -10,7 +10,7 @@ public class mazeController : MonoBehaviour
     Floor floor;
     List<Tile> playerTiles = new List<Tile>();
     List<Vector2> playerDistances = new List<Vector2>();
-    float tiltFactor = 2;
+    float tiltFactor = 4;
 
 
     void Start()

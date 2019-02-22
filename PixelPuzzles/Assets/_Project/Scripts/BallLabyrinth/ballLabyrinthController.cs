@@ -20,7 +20,7 @@ public class ballLabyrinthController : MonoBehaviour {
 	void Start () {
         //need a coroutine to build the maze, rotate, drop in, spawn ball
 
-        StartCoroutine(spawnMaze(5, 5));
+        StartCoroutine(spawnMaze(10, 5));
     }
 	
 	// Update is called once per frame

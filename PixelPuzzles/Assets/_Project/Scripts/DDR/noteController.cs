@@ -29,5 +29,7 @@ public class noteController : MonoBehaviour {
         {
             OnNoteStrike();
         }
+
+        Destroy(this.gameObject);
     }
 }
