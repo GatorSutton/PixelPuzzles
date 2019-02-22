@@ -63,8 +63,8 @@ public class TetrisGameController : MonoBehaviour {
                 StartCoroutine(deleteColumn(i));
                 numOfCompleteLines++;
                 TE.startExplode(frontSpawn, 2f);
-                TE.startExplode(leftSpawn, 2f);
-                TE.startExplode(rightSpawn, 2f);
+                //  TE.startExplode(leftSpawn, 2f);
+                // TE.startExplode(rightSpawn, 2f);
             }
 
         }
@@ -86,15 +86,16 @@ public class TetrisGameController : MonoBehaviour {
                 StartCoroutine(deleteRow(i));
                 numOfCompleteLines++;
                 TE.startExplode(frontSpawn, 2f);
-                TE.startExplode(leftSpawn, 2f);
-                TE.startExplode(rightSpawn, 2f);
+                //    TE.startExplode(leftSpawn, 2f);
+                //   TE.startExplode(rightSpawn, 2f);
             }
 
         }
+
         if(numOfCompleteLines > 0)
         {
-            StartCoroutine(SpawnFrenzy());
-            ScoreController.AddScore(5000 * (numOfCompleteLines * numOfCompleteLines));
+            ScoreController.AddScore(numOfCompleteLines * numOfCompleteLines * 5000);
+            Destroy(this.gameObject, 5f);
         }
 
     }
