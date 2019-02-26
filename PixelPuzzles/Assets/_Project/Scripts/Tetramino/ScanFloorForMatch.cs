@@ -22,6 +22,9 @@ public class ScanFloorForMatch : MonoBehaviour {
 
     [SerializeField]
     List<Tile> currentTiles = new List<Tile>();
+    int currentAnimatedTile = 0;
+    int previousAnimatedTile = 3;
+    float timer;
 
 	// Use this for initialization
 	void Start () {
@@ -36,7 +39,7 @@ public class ScanFloorForMatch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-       
+        updateAnimatedTiles();
    
 
         if (mTTC !=null && mTTC.centered)
@@ -86,8 +89,6 @@ public class ScanFloorForMatch : MonoBehaviour {
 
         while(timer < time && shapeHolding)
         {
-            StartCoroutine(currentShapeAnimation(shapeHolding));
-            //Debug.Log("checking" + timer);
             timer += Time.deltaTime;
             percentComplete = timer / time;
             shapeHolding = CheckShape(i, j, shape);
@@ -143,29 +144,30 @@ public class ScanFloorForMatch : MonoBehaviour {
         transform.localPosition = new Vector3(0f, -5f, 0f);
     }
 
-     IEnumerator currentShapeAnimation(bool shapeHolding)
+
+    void updateAnimatedTiles()
     {
-        float timer = 0;
-        int count = 0;
-        while (shapeHolding)
+        if (currentTiles.Count != 0)
         {
-                 timer += Time.deltaTime;
-               // float timeToMove = Mathf.Lerp(.5f, .2f, timer / timeToMakeShape);
-                currentTiles[count].myState = Tile.States.SHAPEANIMATION;
-                yield return new WaitForSeconds(.3f);
-                currentTiles[count].myState = Tile.States.NONE;
+            timer -= Time.deltaTime;
 
-            if (count >= 3)
+            if(timer <= 0)
             {
-                count = 0;
+                timer = Mathf.Lerp(.3f, .03f, percentComplete);
+                currentTiles[currentAnimatedTile].myState = Tile.States.SHAPEANIMATION;
+                currentTiles[previousAnimatedTile].myState = Tile.States.NONE;
+                previousAnimatedTile = currentAnimatedTile;
+                if(currentAnimatedTile == 3)
+                {
+                    currentAnimatedTile = 0;
+                }
+                else
+                {
+                    currentAnimatedTile++;
+                }
+                
             }
-            else
-            {
-                count++;
-            }
-            yield return null;
         }
-
     }
 
 }

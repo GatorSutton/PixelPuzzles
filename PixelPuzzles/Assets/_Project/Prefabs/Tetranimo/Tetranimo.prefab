@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentComplete: 0
+  text: {fileID: 0}
   startColor: {r: 1, g: 1, b: 1, a: 1}
   endColor: {r: 1, g: 1, b: 1, a: 1}
   image: {fileID: 0}
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pB: {fileID: 114179708781291426}
-  timeToMakeShape: 3
+  timeToMakeShape: 5
   shapeMap:
   - shape: 1
     shapePrefab: {fileID: 1055818544576400, guid: 85573501c414d7d48bcd8e158eb706e7,
@@ -241,7 +242,8 @@ MonoBehaviour:
     shapePrefab: {fileID: 1605251728403216, guid: d27b2c6c020935942a3886909befdee9,
       type: 2}
   percentComplete: 0
-  shape: 1
+  shape: 3
+  currentTiles: []
 --- !u!114 &114628280580726824
 MonoBehaviour:
   m_ObjectHideFlags: 1
