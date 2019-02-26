@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour {
 
     public float timeBetweenFlicker;
     // public enum States { NONE, WARN, FLICKEROFF, FIRE, DAMAGE, SWITCH, FAKEFIRE, SELECTOR, POTION};
-    public enum States {NONE, SET, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, WHITE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON, NOTEBARHIT,  MOLE};
+    public enum States {NONE, SET, SHAPEANIMATION, FLIP, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, WHITE, SELECTOR, NOTE, NOTEBAROFF, NOTEBARON, NOTEBARHIT,  MOLE};
     //[System.NonSerialized]
     public States myState = States.NONE;
     public Material[] materials;
@@ -136,6 +136,9 @@ public class Tile : MonoBehaviour {
             case States.SET:
                 rend.material = materials[1];
                 break;
+            case States.SHAPEANIMATION:
+                rend.material = materials[1];
+                break;
             case States.FLIP:
                 rend.material = materials[6];
                 break;
@@ -179,7 +182,7 @@ public class Tile : MonoBehaviour {
                 
         }
         
-        if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR && myState != States.NOTEBARHIT)
+        if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR && myState != States.NOTEBARHIT && myState != States.SHAPEANIMATION)
         {
             rend.material = materials[5];
         }

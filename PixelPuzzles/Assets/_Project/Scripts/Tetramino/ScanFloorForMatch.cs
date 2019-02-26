@@ -20,6 +20,9 @@ public class ScanFloorForMatch : MonoBehaviour {
     private shapeController visualShape;
     private moveTetrominoToCenter mTTC;
 
+    [SerializeField]
+    List<Tile> currentTiles = new List<Tile>();
+
 	// Use this for initialization
 	void Start () {
         mTTC = GetComponent<moveTetrominoToCenter>();
@@ -32,6 +35,10 @@ public class ScanFloorForMatch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+       
+   
+
         if (mTTC !=null && mTTC.centered)
         {
             //loop through all the squares
@@ -42,6 +49,7 @@ public class ScanFloorForMatch : MonoBehaviour {
                     if (tileArray[i, j].isPlayerHere() && tileArray[i, j].myState != Tile.States.SET)
                     {
                         bool[,] visited = DepthFirstSearch.islandIsTetranimo(tileArray, i, j);
+
                         if (visited != null)
                         {
                             neighborData = DepthFirstSearch.getListOfNeighbors(visited);
@@ -49,6 +57,18 @@ public class ScanFloorForMatch : MonoBehaviour {
                             {
                                 checkingShapeInProgress = true;
                                 StartCoroutine(constantCheckShape(timeToMakeShape, i, j, visited));                                                      //check that shape holds for set amount of time
+
+                                for (int k = 0; k < tileArray.GetLength(0); k++)
+                                {
+                                    for (int l = 0; l < tileArray.GetLength(1); l++)
+                                    {
+                                        if (visited[k, l] == true)
+                                        {
+                                            currentTiles.Add(tileArray[k, l]);
+                                        }
+                                    }
+                                }                           //add the current shape of tiles to a list
+
                             }
                         }
                     }
@@ -66,6 +86,7 @@ public class ScanFloorForMatch : MonoBehaviour {
 
         while(timer < time && shapeHolding)
         {
+            StartCoroutine(currentShapeAnimation(shapeHolding));
             //Debug.Log("checking" + timer);
             timer += Time.deltaTime;
             percentComplete = timer / time;
@@ -90,6 +111,7 @@ public class ScanFloorForMatch : MonoBehaviour {
             //tetrominoReset();
         }
 
+        currentTiles.Clear();
         percentComplete = 0;
         checkingShapeInProgress = false;
         yield return null;
@@ -119,6 +141,31 @@ public class ScanFloorForMatch : MonoBehaviour {
     {
         visualShape = Instantiate(shapeMap.Find(x => x.shape == shape).shapePrefab, this.transform).GetComponent<shapeController>();
         transform.localPosition = new Vector3(0f, -5f, 0f);
+    }
+
+     IEnumerator currentShapeAnimation(bool shapeHolding)
+    {
+        float timer = 0;
+        int count = 0;
+        while (shapeHolding)
+        {
+                 timer += Time.deltaTime;
+               // float timeToMove = Mathf.Lerp(.5f, .2f, timer / timeToMakeShape);
+                currentTiles[count].myState = Tile.States.SHAPEANIMATION;
+                yield return new WaitForSeconds(.3f);
+                currentTiles[count].myState = Tile.States.NONE;
+
+            if (count >= 3)
+            {
+                count = 0;
+            }
+            else
+            {
+                count++;
+            }
+            yield return null;
+        }
+
     }
 
 }
