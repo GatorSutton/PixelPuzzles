@@ -94,7 +94,8 @@ public class ScanFloorForMatch : MonoBehaviour {
             shapeHolding = CheckShape(i, j, shape);
             yield return null;
         }
-        if(timer >= time)
+        resetCurrentTiles();
+        if (timer >= time)
         {
             for (int x = 0; x < visited.GetLength(0); x++)
             {
@@ -112,7 +113,6 @@ public class ScanFloorForMatch : MonoBehaviour {
             //tetrominoReset();
         }
 
-        currentTiles.Clear();
         percentComplete = 0;
         checkingShapeInProgress = false;
         yield return null;
@@ -168,6 +168,15 @@ public class ScanFloorForMatch : MonoBehaviour {
                 
             }
         }
+    }
+
+    void resetCurrentTiles()
+    {
+        for (int i = 0; i < currentTiles.Count; i++)
+        {
+            currentTiles[i].myState = Tile.States.NONE;
+        }
+        currentTiles.Clear();
     }
 
 }
