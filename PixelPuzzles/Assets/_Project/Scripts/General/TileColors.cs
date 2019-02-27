@@ -16,6 +16,9 @@ public class TileColors : MonoBehaviour {
             case Tile.States.SET:
                 return Color.Red;
 
+            case Tile.States.SHAPEANIMATION:
+                return Color.Red;
+
             case Tile.States.FLIP:
                 return Color.Purple;
 
