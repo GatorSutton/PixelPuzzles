@@ -13,13 +13,14 @@ public class ballLabyrinthController : MonoBehaviour {
     public Transform MazeDestination;
     public float dropInSpeed;
 
+    GameObject ballInstance;
+    Maze mazeInstance;
 
     mazeController mC;
 
 	// Use this for initialization
 	void Start () {
         //need a coroutine to build the maze, rotate, drop in, spawn ball
-
         StartCoroutine(spawnMaze(8, 8));
     }
 	
@@ -30,7 +31,7 @@ public class ballLabyrinthController : MonoBehaviour {
 
     IEnumerator spawnMaze(int x, int z)
     {
-        var mazeInstance = Instantiate(MazePrefab, MazeSpawn) as Maze;
+        mazeInstance = Instantiate(MazePrefab, MazeSpawn) as Maze;
         mazeInstance.size.x = x;
         mazeInstance.size.z = z;
         yield return StartCoroutine(mazeInstance.Generate());
@@ -45,9 +46,15 @@ public class ballLabyrinthController : MonoBehaviour {
         mazeInstance.gameObject.AddComponent<mazeController>();
 
         //Spawn the ball and set goal point
-        Instantiate(BallPrefab, mazeInstance.SpawnPoint);
+        ballInstance = Instantiate(BallPrefab, mazeInstance.SpawnPoint);
         Instantiate(GoalPrefab, mazeInstance.GoalPoint);
 
        
+    }
+
+    public void respawnBall()
+    {
+        Destroy(ballInstance);
+        ballInstance = Instantiate(BallPrefab, mazeInstance.SpawnPoint);
     }
 }

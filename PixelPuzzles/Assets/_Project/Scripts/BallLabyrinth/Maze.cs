@@ -24,10 +24,17 @@ public class Maze : MonoBehaviour {
     [SerializeField]
     private Transform goalPoint;
     public Transform GoalPoint { get { return goalPoint; } }
+    [SerializeField]
+    List<MazeCell> allCells = new List<MazeCell>();
+    ballSteppedOn bSO;
 
-    
+    private void Start()
+    {
+        bSO = GetComponent<ballSteppedOn>();
+    }
 
-	public IntVector2 RandomCoordinates {
+
+    public IntVector2 RandomCoordinates {
 		get {
 			return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.z));
 		}
@@ -54,6 +61,7 @@ public class Maze : MonoBehaviour {
         //Create a spawn point and a finish point
         spawnPoint = cellList.OrderBy(item => item.distanceFromOrigin).First().transform;
         goalPoint = cellList.OrderByDescending(item => item.distanceFromOrigin).First().transform;
+        bSO.allCells = this.allCells;
 	}
 
 	private void DoFirstGenerationStep (List<MazeCell> activeCells) {
@@ -94,6 +102,7 @@ public class Maze : MonoBehaviour {
 		newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
 		newCell.transform.parent = transform;
 		newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
+        allCells.Add(newCell);
 		return newCell;
 	}
 
