@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0042841323, g: 0.0029957597, b: 0.011675893, a: 1}
+  m_IndirectSpecularColor: {r: 0.004284122, g: 0.0029957544, b: 0.011675861, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -712,7 +712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &463185887
 Transform:
   m_ObjectHideFlags: 0
@@ -1220,7 +1220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &742415168
 Transform:
   m_ObjectHideFlags: 0
@@ -1305,7 +1305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &846185281
 Transform:
   m_ObjectHideFlags: 0
@@ -1387,7 +1387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &866366826
 Transform:
   m_ObjectHideFlags: 0
@@ -2023,7 +2023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1437253757
 Transform:
   m_ObjectHideFlags: 0
@@ -2348,8 +2348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allTiles: []
-  allAliens:
-  - {fileID: 0}
 --- !u!1 &1705605601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1705605602
 Transform:
   m_ObjectHideFlags: 0
@@ -2481,7 +2479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1810034479
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,7 +2728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1927827849
 Transform:
   m_ObjectHideFlags: 0
@@ -2857,7 +2855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2022411168
 Transform:
   m_ObjectHideFlags: 0
@@ -2968,9 +2966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc35de6f15dd5364787a0f2754d152a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allTiles: []
   alienPrefab: {fileID: 114797532155287564, guid: db8d0f1306e214144903ebb66938a65d,
     type: 2}
+  allAliens: []
   eL: {fileID: 1555233405}
 --- !u!4 &2023423779
 Transform:

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class whackamoleController : MonoBehaviour {
 
-   //Randomly set flippable tiles
-   //Flippable tiles self destruct in x amount of time
-   //Stepping on the tile adds to score
-   //HINT: DIVIDE AND CONQUER 
 
     Floor floor;
 
@@ -17,6 +13,7 @@ public class whackamoleController : MonoBehaviour {
     List<alienController> allAliens = new List<alienController>();
     int alienCount = 0;
     public earthLaser eL;
+
 
     // Use this for initialization
     void Start () {
@@ -35,11 +32,10 @@ public class whackamoleController : MonoBehaviour {
         if(allAliens.Count > 0 && !allAliens[0].isAlive)
         {
             allAliens.RemoveAt(0);
-            eL.setCurrentAlien(allAliens[0]);
+            if (allAliens.Count != 0) { eL.setCurrentAlien(allAliens[0]); }
         }
 
         alienCount = allAliens.Count;
-        
 	}
 
     //add script in inspector to add strings for different get ready messages
@@ -52,16 +48,18 @@ public class whackamoleController : MonoBehaviour {
 
     IEnumerator spawnMoles()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 1; i++)
         {
             yield return new WaitForSeconds(3f);
             spawnRandomMoles(2);
         }
+
+        
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(2f);
             spawnRandomMoles(3);
-        }
+        } 
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(1f);
@@ -69,8 +67,8 @@ public class whackamoleController : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(5f);
-
         /*
+        
         for (int i = 0; i < 25; i++)
         {
             yield return new WaitForSeconds(.1f);
@@ -86,7 +84,5 @@ public class whackamoleController : MonoBehaviour {
         alienController alien = Instantiate(alienPrefab, this.transform);
         allAliens.Add(alien);
     }
-
-
 
 }

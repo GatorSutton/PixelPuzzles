@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class alienController : MonoBehaviour {
 
@@ -29,6 +30,8 @@ public class alienController : MonoBehaviour {
         listOfShields.Add(Tile.States.BLUE);
         listOfShields.Add(Tile.States.GREEN);
         listOfShields.Add(Tile.States.RED);
+
+        listOfShields = listOfShields.OrderBy(x => Random.value).ToList();
 
         setColor(listOfShields[currentShield]);
     }
