@@ -90,7 +90,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 6aa38564ae303104890642939c1ba5b4, type: 2}
+  - {fileID: 2100000, guid: ca5d854477fee774c9ada9f207571b88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,7 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06409af404dee3c4b820c1a7ae7988eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allTiles: []
+  materials:
+  - {fileID: 2100000, guid: ca5d854477fee774c9ada9f207571b88, type: 2}
+  - {fileID: 2100000, guid: 4ada10ba323777740aa4734cd91b06f0, type: 2}
+  - {fileID: 2100000, guid: 370205ada1af0ca4690ec2da4fc6f861, type: 2}
+  listOfShields: 
+  isAlive: 1
+  mr: {fileID: 23989503821900650}
 --- !u!136 &136846167496414658
 CapsuleCollider:
   m_ObjectHideFlags: 1

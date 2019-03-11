@@ -10,58 +10,68 @@ public class alienController : MonoBehaviour {
     //falls out of sight when destroyed
 
     Floor floor;
-    [SerializeField]
     List<Tile> allTiles = new List<Tile>();
     Tile tile;
-    bool vulnerable = true;
+    public Material[] materials = new Material[3];
+
+    [SerializeField]
+    List<Tile.States> listOfShields = new List<Tile.States>();
+    int currentShield = 2;
+    public bool isAlive = true;
+
+    public MeshRenderer mr;
 
 
     // Use this for initialization
     void Start () {
-        floor = GameObject.Find("Floor").GetComponent<Floor>();
-        spawnRandomMole();
+        // floor = GameObject.Find("Floor").GetComponent<Floor>();
+        //  spawnRandomMole();
+        listOfShields.Add(Tile.States.BLUE);
+        listOfShields.Add(Tile.States.GREEN);
+        listOfShields.Add(Tile.States.RED);
+
+        setColor(listOfShields[currentShield]);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        checkForHit();
+
 	}
 
-
-    void spawnRandomMole()
+    public void TakeHit(Tile.States state)
     {
-        allTiles = floor.getAllTiles();
-        for (int i = allTiles.Count - 1; i >= 0; i--)          //remove all spots where there is a mole or player
+        if(state == listOfShields[currentShield])
         {
-            if (allTiles[i].isPlayerHere() || allTiles[i].myState == Tile.States.MOLE)
+            if (currentShield == 0)
             {
-                allTiles.RemoveAt(i);
+                isAlive = false;
+                Destroy(this.gameObject);
             }
-        }
+            else
+            {
+                currentShield--;
+                setColor(listOfShields[currentShield]);
+            }
 
-        int randomTile = Random.Range(0, allTiles.Count);
-        allTiles[randomTile].myState = Tile.States.MOLE;
-        tile = allTiles[randomTile];
-        StartCoroutine(moleReturnsToTheEarth(10f, allTiles[randomTile]));
+        }
     }
 
-    //turns a mole back into a regular tile if not stepped on in time
-    IEnumerator moleReturnsToTheEarth(float time, Tile tile)
+    void setColor(Tile.States state)
     {
-        yield return new WaitForSeconds(time);
-        if (tile.myState == Tile.States.MOLE)
+        switch (state)
         {
-            tile.myState = Tile.States.NONE;
+            case Tile.States.GREEN:
+                mr.material = materials[0];
+                break;
+            case Tile.States.BLUE:
+                mr.material = materials[1];
+                break;
+            case Tile.States.RED:
+                mr.material = materials[2];
+                break;
+            default:
+                break;
         }
-        vulnerable = false;
     }
 
-    void checkForHit()
-    {
-        if (vulnerable && tile.myState == Tile.States.NONE)
-        {
-            ScoreController.AddScore(100);
-            Destroy(this.gameObject);
-        }
-    }
 }
