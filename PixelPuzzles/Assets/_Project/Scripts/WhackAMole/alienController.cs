@@ -14,6 +14,7 @@ public class alienController : MonoBehaviour {
     List<Tile> allTiles = new List<Tile>();
     Tile tile;
     public Material[] materials = new Material[3];
+    public setShieldColor SC;
 
     [SerializeField]
     List<Tile.States> listOfShields = new List<Tile.States>();
@@ -33,7 +34,8 @@ public class alienController : MonoBehaviour {
 
         listOfShields = listOfShields.OrderBy(x => Random.value).ToList();
 
-        setColor(listOfShields[currentShield]);
+        setColor(listOfShields[0]);
+        SC.setColor(listOfShields[2]);
     }
 	
 	// Update is called once per frame
@@ -50,10 +52,16 @@ public class alienController : MonoBehaviour {
                 isAlive = false;
                 Destroy(this.gameObject);
             }
+            else if(currentShield == 2)
+            {
+                currentShield--;
+                SC.setColor(listOfShields[currentShield]);
+            }
             else
             {
                 currentShield--;
-                setColor(listOfShields[currentShield]);
+                Destroy(SC.gameObject);
+
             }
 
         }
