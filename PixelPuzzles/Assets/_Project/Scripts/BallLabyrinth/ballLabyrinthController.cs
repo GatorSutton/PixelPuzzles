@@ -57,4 +57,14 @@ public class ballLabyrinthController : MonoBehaviour {
         Destroy(ballInstance);
         ballInstance = Instantiate(BallPrefab, mazeInstance.SpawnPoint);
     }
+
+    private void OnEnable()
+    {
+        MazeCellTrigger.OnSteppedOn += respawnBall;
+    }
+
+    private void OnDisable()
+    {
+        MazeCellTrigger.OnSteppedOn -= respawnBall;
+    }
 }

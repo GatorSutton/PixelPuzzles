@@ -8,14 +8,17 @@ public class MazeCellTrigger : MonoBehaviour {
     MazeCell mc;
     Floor floor;
     Tile thisTile;
-    ballLabyrinthController bLC;
+   // ballLabyrinthController bLC;
+
+    public delegate void BallAction();
+    public static event BallAction OnSteppedOn;
 
     // Use this for initialization
     void Start () {
         mc = GetComponent<MazeCell>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         thisTile = floor.getTile(mc.coordinates.x, mc.coordinates.z);
-        bLC = GameObject.Find("LabyrinthGameController").GetComponent<ballLabyrinthController>();
+       // bLC = GameObject.Find("LabyrinthGameController").GetComponent<ballLabyrinthController>();
 	}
 
     private void Update()
@@ -24,7 +27,11 @@ public class MazeCellTrigger : MonoBehaviour {
         {
             //respawn the ball
             thisTile.myState = Tile.States.NONE;
-            bLC.respawnBall();
+            //bLC.respawnBall();
+            if(OnSteppedOn != null)
+            {
+                OnSteppedOn();
+            }
 
         }
     }
